@@ -1,0 +1,9 @@
+#redes-sociais img {
+    width: 60px;
+    margin: 0 20px 0 0;
+    padding: 2px;
+}
+
+#redes-sociais img:hover {
+    border:1px solid #8c8c8c;
+}
