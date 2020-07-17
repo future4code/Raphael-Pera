@@ -1,0 +1,42 @@
+form div {
+    background-color: white;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 8px 0;
+}
+
+form div label {background-color: none;
+    display: flex;
+    min-width: 180px;
+    align-items: center;
+}
+
+form div input {
+    width: 80%;
+    min-width: 180px;
+}
+
+form .form-add {
+    display: flex;
+    width: 50%;
+    margin: 20px 0 0 0;
+    justify-content: space-around;
+    min-width: 360px;
+}
+form div button {
+    width: 98%;
+    padding: 10px;
+    border: none;
+    color: white;
+    background-color: #00979c;
+    font-size: 16px;
+}
+
+form div button:hover {
+    background-color: #007b80;
+}
+
+form div button:active {
+    background-color: #00c5cc;
+}
