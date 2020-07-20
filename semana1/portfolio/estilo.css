@@ -1,0 +1,150 @@
+html, body {margin: 0; padding: 0; font-family: 'Roboto', Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+a {text-decoration: none;}
+
+body {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    /*background-image: url("./img/foto_parede_fio.jpeg");*/
+    background-color: #f5f5f0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/*
+#teste {
+    background-color: white;
+    height: 300vh;
+    margin: 25vh 5.5vw 0 5.5vw;
+    opacity: 0.85;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+}
+*/
+
+#container {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 89%;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f0;
+    padding: 20px 0;
+    margin: 0 0 7vh 0;
+    position: sticky;
+    top:0;
+    z-index: 2;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /*background-color: darkseagreen;*/
+}
+
+#logo-img-name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#logo-img {
+    border: 5px solid rgb(5, 99, 192);
+    border-radius: 40%;
+    padding: 6px;
+    font-size: 24px;
+    font-weight: bolder;
+    color: rgb(5, 99, 192);
+}
+
+#logo-name {
+    font-size: 22px;
+    font-weight: bold;
+    color: rgb(5, 99, 192);
+    margin: 0 0 0 10px;
+}
+
+#logo-sub {
+    color: #8d8d8d;
+    letter-spacing: 3px;
+    align-self: center;
+    margin: 10px 0 0 0;
+    font-size: 10px;
+}
+
+
+header nav {
+    /*background-color: #ececad;*/
+    margin: 0;
+}
+
+header nav ul {
+    /*background-color: brown;*/
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+header nav ul li {
+
+    /*background-color: chartreuse;*/
+    height: 100%;
+}
+
+header nav ul a {
+    /*background-color: blue;*/
+    display: flex;
+    text-decoration: none;
+    margin: 0;
+    padding: 0 40px;
+    text-align: center;
+    align-items: center;
+    height: 100%;
+    color: rgb(5, 99, 192);
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    transition: 0.25s;
+
+}
+
+header nav ul a:hover {
+    font-size: 21px;
+    text-decoration: underline;
+    color: rgb(6, 80, 153);
+}
+
+nav .active {
+    text-decoration: underline;
+}
+
+#holder {
+    /*display: flex;
+    flex-direction: column;
+    justify-content: space-between;*/
+    background-color: white;
+    width: 100%;
+    opacity: 0.9;
+    /*box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.4), 0 0px 20px 0 rgba(0, 0, 0, 0.4);*/
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    min-height: 100vh;
+}
+
+
+
+
+
