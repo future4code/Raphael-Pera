@@ -70,6 +70,20 @@ div img {
     background-color: #2274a5;
     color: white;
     padding: 15vh 0 0 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#container-de-descricao p {
+    align-self: flex-end;
+    padding: 0 3vw 0 0;
+}
+#container-de-descricao p:nth-child(1) {
+    padding: 0 8vw 0 0;
+}
+#container-de-descricao p:nth-child(2) {
+    padding: 0 5.5vw 0 0;
 }
 
 #container-de-descricao>ol {
