@@ -7,6 +7,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 h2 {
@@ -157,7 +158,8 @@ div.container-do-search>div {
     flex-direction: row;
     height: 40px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+
 }
 
 div.container-do-search input, div.container-do-search a {
@@ -165,7 +167,11 @@ div.container-do-search input, div.container-do-search a {
 }
 
 div.container-do-search img.icone {
-    margin: 0 15px;
-    padding: 0;
-    height: 80%;
+    padding: 3px 15px;
+    height: 100%;
 }
+
+div.container-do-search a:hover {
+    background-color: whitesmoke;
+}
+
