@@ -25,18 +25,6 @@ button:focus {
     color: white;
 }
 
-img {
-    width: 100px;
-}
-
-div>p:first-child {
-    display: inline;
-}
-
-div img {
-    background: black;
-}
-
 .botao-amarelo {
     background-color: #ffaf43;
     width: 250px;
@@ -100,6 +88,10 @@ div img {
     font-size: 60px;
 }
 
+#container-para-comprar a {
+    display: block;
+}
+
 
 /**
   *
@@ -149,12 +141,31 @@ td button {
     background-color: #635a3d
 }
 
-a {
+#back-button a {
     text-decoration: none;
     color: black;
 }
 
-#container-para-comprar a {
-    display: block;
-    margin: 15px 0 0 0;
+div.container-do-search {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+div.container-do-search>div {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+div.container-do-search input, div.container-do-search a {
+    height: 100%;
+}
+
+div.container-do-search img.icone {
+    margin: 0 15px;
+    padding: 0;
+    height: 80%;
 }
