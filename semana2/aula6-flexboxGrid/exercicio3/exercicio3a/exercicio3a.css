@@ -122,42 +122,4 @@ body {
 .pink-background    {flex-basis: 62%;}
 #middle-container   {flex-basis: 25%;}
 #div-footer         {flex-basis: 6.5%;}
-/*=============================================*/
-
-#layout {
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 40px;
-    display: none;
-}
-
-#layout img {
-    height: 100%;
-    opacity: 1;
-}
-
-#teste {
-    background-color: burlywood;
-    height: 200px;
-    display: flex;
-    display: none;
-    flex-direction: column;
-}
-
-#blue {
-    background-color: blue;
-    flex-grow: 1;
-}
-
-#red {
-    background-color: red;
-    flex-grow: 6;
-}
-
-#green {
-    background-color: green;
-    flex-grow: 1;
-}
-
 
