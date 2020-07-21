@@ -8,12 +8,11 @@ body {
     color: white;
 }
 
-#main-container {width: 100%; height: 100%;}
-
-#top-container {
+#main-container {
+    width: 100%;
+    height: 100%;
     display: grid;
-    grid-template: 1fr/ repeat(4, 1fr);
-    height: 6.5%;
+    grid-template: 6.5vh 62vh 12.5vh 12.5vh 6.5vh/repeat(4, 1fr);
 }
 
 .green-background {
@@ -27,7 +26,7 @@ body {
 .yellow-background {
     background-color: yellow;
     color: black;
-    grid-area: 1/2/1/5;
+    grid-area: 1/2/2/5;
     display: grid;
     justify-items: center;
     align-items: center;
@@ -35,45 +34,31 @@ body {
 
 .pink-background {
     background-color: fuchsia;
-    height: 62%;
+    grid-area: 2/1/3/5;
     display: grid;
     justify-items: center;
     align-items: center;
 }
 
-#middle-container {
-    display: grid;
-    grid-template: repeat(2, 1fr)/ repeat(4, 1fr);
-    height: 25%;
-}
-
-#content2 {
+.blue-background {
     background-color: blue;
-    grid-area: 1/1/3/3;
+    grid-area: 3/1/5/3;
     display: grid;
     justify-items: center;
     align-items: center;
 }
 
-#vertical-middle-container {
-    grid-area: 1/4/3/5;
-    background-color: cadetblue;
-
-    display: grid;
-    grid-template: 1fr 1fr/1fr;
-}
-
-#image {
+.red-background {
     background-color: red;
-    grid-area: 1/1/2/2;
+    grid-area: 3/4/4/5;
     display: grid;
     justify-items: center;
     align-items: center;
 }
 
-#extra {
+.lightgreen-background {
     background-color: lightgreen;
-    grid-area: 2/1/3/2;
+    grid-area: 4/4/5/5;
     display: grid;
     justify-items: center;
     align-items: center;
@@ -81,7 +66,7 @@ body {
 
 .purple-background {
     background-color: purple;
-    height: 6.5vh;
+    grid-area: 5/1/6/5;
     display: grid;
     justify-items: center;
     align-items: center;
