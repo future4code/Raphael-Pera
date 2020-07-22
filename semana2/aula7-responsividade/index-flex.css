@@ -5,6 +5,8 @@ body {
     height: 100vh;
     padding: 0;
     margin: 0;
+    min-width: 200px;
+    font-family: sans-serif;
 }
 
 [class*="-block"], [id*="-block"] {
@@ -16,7 +18,6 @@ body {
 }
 
 #main-container {
-    background-color: lightgreen;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -28,6 +29,7 @@ body {
     background-color: red;
     width: 100%;
     height: 8vh;
+    border: 0;
 }
 
 .blue-block {
@@ -59,4 +61,16 @@ body {
     background-color: white;
     width: 31%;
     height: 16vh;
+}
+
+@media screen and (max-width: 500px) {
+    .blue-block {width: 47%;}
+    .yellow-block {width: 47%;}
+    .white-block {width: 47%;}
+    .green-block {width: 96%;}
+    div:last-child {width: 96%;}
+}
+
+@media screen and (max-width: 320px) {
+    [class*="-block"] {width: 96%;}
 }

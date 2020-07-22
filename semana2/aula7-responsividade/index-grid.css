@@ -1,0 +1,110 @@
+* {box-sizing: border-box;}
+
+body {
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    min-width: 200px;
+    font-family: sans-serif;
+}
+
+[class*="-block"] {
+    border: 1px solid black;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+#first-block {
+    background-color: red;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.blue-block {
+    background-color: blue;
+}
+
+.yellow-block {
+    background-color: yellow;
+}
+
+.green-block {
+    background-color: green;
+}
+
+.black-block {
+    background-color: black;
+    color: white;
+}
+
+.white-block {
+    background-color: white;
+}
+
+#main-container > div:nth-child(1)  {grid-area: a;}
+#main-container > div:nth-child(2)  {grid-area: b;}
+#main-container > div:nth-child(3)  {grid-area: c;}
+#main-container > div:nth-child(4)  {grid-area: d;}
+#main-container > div:nth-child(5)  {grid-area: e;}
+#main-container > div:nth-child(6)  {grid-area: f;}
+#main-container > div:nth-child(7)  {grid-area: g;}
+#main-container > div:nth-child(8)  {grid-area: h;}
+#main-container > div:nth-child(9)  {grid-area: i;}
+#main-container > div:nth-child(10) {grid-area: j;}
+#main-container > div:nth-child(11) {grid-area: k;}
+#main-container > div:nth-child(12) {grid-area: l;}
+
+#main-container {
+    width: 100%;
+    display: grid;
+    /*grid-template: repeat(5, 1fr)/repeat(6, 1fr);*/
+    grid-template: 8vh 16vh 16vh 32vh 16vh/ 0 1fr 0.5fr 0.5fr 1fr 0;
+    grid-template-areas:
+        'a a a a a a'
+        '. b c c d .'
+        '. e f f g .'
+        '. h h i i .'
+        '. j k k l .'
+    ;
+    gap: 10px;
+}
+
+
+@media screen and (max-width: 500px) {
+    #main-container {
+        grid-template: 8vh repeat(4, 16vh) 32vh repeat(2, 16vh)/ 0 1fr 0.5fr 0.5fr 1fr 0;
+        grid-template-areas:
+        'a a a a a a'
+        '. b b c c .'
+        '. d d d d .'
+        '. e e f f .'
+        '. g g g g .'
+        '. h h i i .'
+        '. j j k k .'
+        '. l l l l .'
+    ;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    #main-container {
+        grid-template: 8vh repeat(6, 16vh) 32vh 32vh repeat(3, 16vh)/ 0 1fr 0.5fr 0.5fr 1fr 0;
+        grid-template-areas:
+        'a a a a a a'
+        '. b b b b .'
+        '. c c c c .'
+        '. d d d d .'
+        '. e e e e .'
+        '. f f f f .'
+        '. g g g g .'
+        '. h h h h .'
+        '. i i i i .'
+        '. j j j j .'
+        '. k k k k .'
+        '. l l l l .'
+    ;
+    }
+}
