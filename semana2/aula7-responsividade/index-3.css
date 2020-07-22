@@ -1,0 +1,43 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+div[class*="-block"] {
+    border: 1px solid black;
+}
+
+#main-container {
+    display: grid;
+    grid-template: repeat(5, 1fr)/repeat(3, 1fr);
+}
+
+#first-block {
+    background-color: red;
+    grid-area: 1/1/2/4;
+}
+
+.blue-block {
+    background-color: blue;
+    grid-area: 2/1/3/2;
+}
+
+.yellow-block {
+    background-color: yellow;
+}
+
+.green-block {
+    background-color: green;
+}
+
+.black-block {
+    background-color: black;
+    color: white;
+}
+
+.white-block {
+    background-color: white;
+}
+
