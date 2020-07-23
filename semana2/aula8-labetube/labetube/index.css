@@ -15,11 +15,14 @@ main > a {
     min-width: 250px; /*max-width: 300px;*/
     border: 1px solid rgb(200, 200, 200);
     text-decoration: none;
-    color: black;
+    color: rgb(10,10,10);
+    box-shadow: 0 2px 2px rgba(120,120,120);
+    transition: 0.2s;
 }
 
 main > a:hover {
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(250,250,250);
+    box-shadow: 0 5px 5px rgba(90,90,90);
 }
 
 main > a > video {

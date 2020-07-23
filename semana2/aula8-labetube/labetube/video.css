@@ -21,12 +21,13 @@ main {
 #video-principal {
     /*background-color: blanchedalmond;*/
     width: 55%;
-    min-width: 300px;
+    min-width: 250px;
     padding: 10px 5px;
 }
 
 #video-principal > video {
     width: 100%;
+    box-shadow: 0 2px 2px rgb(120,120,120);
 }
 
 #video-principal > p {
@@ -53,15 +54,18 @@ main {
     display: flex;
     padding: 20px 0;
     border-bottom: 1px solid rgb(210, 210, 210);
+    transition: 0.2s;
 }
 
 #video-lista > a:hover {
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(235,235,235);
+    box-shadow: 0 5px 5px rgba(120,120,120);
 }
 
 #video-lista > a > video {
     width: 40%;
     min-width: 100px;
+    box-shadow: 0 2px 2px rgb(120,120,120);
 }
 
 #video-lista > a > p {
@@ -70,3 +74,9 @@ main {
     padding: 5px 15px;
     min-width: 100px;
 }
+
+
+@media screen and (max-width: 550px) {
+    #video-lista {display: none;}
+    footer {position: fixed; bottom: 0;}
+} 
