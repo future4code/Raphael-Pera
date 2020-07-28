@@ -56,88 +56,88 @@
 //-------------------------------------------------------------
 
 
-// //-- Exercicio de escrita de código 01----------------------------
-//   //a.
-//     let idadeEuTemp = prompt("Informe sua idade")
-//     let idadeEu = Number(idadeEuTemp)
+//-- Exercicio de escrita de código 01----------------------------
+  //a.
+    let idadeEuTemp = prompt("Informe sua idade")
+    let idadeEu = Number(idadeEuTemp)
 
-//   //b.
-//     let idadeAmigoTemp = prompt("Informe a idade de seu melhor amigo")
-//     let idadeAmigo = Number(idadeAmigoTemp)
+  //b.
+    let idadeAmigoTemp = prompt("Informe a idade de seu melhor amigo")
+    let idadeAmigo = Number(idadeAmigoTemp)
   
-//   //c.    
-//     let idadeCompara = idadeEu > idadeAmigo
-//     console.log("Sua idade é maior do que a do seu melhor amigo?", idadeCompara)
+  //c.    
+    let idadeCompara = idadeEu > idadeAmigo
+    console.log("Sua idade é maior do que a do seu melhor amigo?", idadeCompara)
     
-//   //d.
-//     let idadeDif = idadeEu - idadeAmigo
-//     console.log(idadeDif)
-// //-------------------------------------------------------------
+  //d.
+    let idadeDif = idadeEu - idadeAmigo
+    console.log(idadeDif)
+//-------------------------------------------------------------
 
 
-// //-- Exercicio de escrita de código 02 ---------------------------
-//   //a.
-//     let numPar = Number(prompt("Insira um número par"))
+//-- Exercicio de escrita de código 02 ---------------------------
+  //a.
+    let numPar = Number(prompt("Insira um número par"))
 
-//   //b.
-//     console.log(numPar%2)
+  //b.
+    console.log(numPar%2)
 
-//   //c.
-//     console.log(4%2)
-//     console.log(8%2)
-//     console.log(20%2)
-//     console.log(102%2)
-//     console.log(2048%2)
-//     //O resultado é sempre 0 (zero). Sempre que calculamos o resto da divisão de um número PAR por 2, o resultado será 0 (zero)
+  //c.
+    console.log(4%2)
+    console.log(8%2)
+    console.log(20%2)
+    console.log(102%2)
+    console.log(2048%2)
+    //O resultado é sempre 0 (zero). Sempre que calculamos o resto da divisão de um número PAR por 2, o resultado será 0 (zero)
 
-//   //d.
-//     let numImpar = Number(prompt("Insira um número ímpar"))
-//     console.log(numImpar%2)
+  //d.
+    let numImpar = Number(prompt("Insira um número ímpar"))
+    console.log(numImpar%2)
 
-//     console.log("(1 % 2) =", 1%2)
-//     console.log("(1049 % 2) =", 1049%2)
-//     console.log("(17 % 2) =", 17%2)
-//     console.log("(23 % 2) =", 23%2)
-//     console.log("(19 % 2) =", 19%2)
-//     console.log("(831 % 2) =", 831%2)
+    console.log("(1 % 2) =", 1%2)
+    console.log("(1049 % 2) =", 1049%2)
+    console.log("(17 % 2) =", 17%2)
+    console.log("(23 % 2) =", 23%2)
+    console.log("(19 % 2) =", 19%2)
+    console.log("(831 % 2) =", 831%2)
 
-//     //Sempre que calculamos o resto da divisão de um número IMPAR por 2, o resultado será 0 (zero)
-// //-------------------------------------------------------------
+    //Sempre que calculamos o resto da divisão de um número IMPAR por 2, o resultado será 0 (zero)
+//-------------------------------------------------------------
 
 
-// //-- Exercicio de escrita de código 03 ---------------------------
-//   //a.
-//     let listaDeTarefas =[]
+//-- Exercicio de escrita de código 03 ---------------------------
+  //a.
+    let listaDeTarefas =[]
     
-//   //b.
-//     let tarefa1 = prompt("Informe a primeira tarefa do dia")
-//     let tarefa2 = prompt("Informe a segunda tarefa do dia")
-//     let tarefa3 = prompt("Informe a terceira tarefa do dia")
+  //b.
+    let tarefa1 = prompt("Informe a primeira tarefa do dia")
+    let tarefa2 = prompt("Informe a segunda tarefa do dia")
+    let tarefa3 = prompt("Informe a terceira tarefa do dia")
 
-//     listaDeTarefas.push(tarefa1)
-//     listaDeTarefas.push(tarefa2)
-//     listaDeTarefas.push(tarefa3)
+    listaDeTarefas.push(tarefa1)
+    listaDeTarefas.push(tarefa2)
+    listaDeTarefas.push(tarefa3)
 
-//   //c.
-//     console.log(listaDeTarefas)
+  //c.
+    console.log(listaDeTarefas)
 
-//   //d.
-//     let tarefaFeita = Number(prompt("Informe o número da tarefa que você já concluiu (0, 1 ou 2)."))
+  //d.
+    let tarefaFeita = Number(prompt("Informe o número da tarefa que você já concluiu (0, 1 ou 2)."))
 
-//   //e.
-//     listaDeTarefas.splice(tarefaFeita, 1)
+  //e.
+    listaDeTarefas.splice(tarefaFeita, 1)
 
-//   //f.
-//   console.log(listaDeTarefas)
-// //-------------------------------------------------------------
+  //f.
+  console.log(listaDeTarefas)
+//-------------------------------------------------------------
 
 
-// //-- Exercicio de escrita de código 04 ---------------------------
-//     let nome = prompt("Informe seu nome")
-//     let email = prompt("Informe seu e-mail")
+//-- Exercicio de escrita de código 04 ---------------------------
+    let nome = prompt("Informe seu nome")
+    let email = prompt("Informe seu e-mail")
 
-//     console.log("O e-mail", email, "foi cadastrado com sucesso. Seja bem vinda(o),", nome + "!")
-// //-------------------------------------------------------------
+    console.log("O e-mail", email, "foi cadastrado com sucesso. Seja bem vinda(o),", nome + "!")
+//-------------------------------------------------------------
 
 
 //-- Desafio 01 -----------------------------------------------------
