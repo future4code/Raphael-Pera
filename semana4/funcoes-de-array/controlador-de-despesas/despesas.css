@@ -1,0 +1,49 @@
+
+* {box-sizing: border-box;}
+
+html, body {margin: 0; padding: 0;}
+
+
+
+header {
+    background-color: rgb(62, 158, 253);
+    width: 100%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+main > section {
+    margin: 20px;
+}
+
+main > section > form > input,
+main > section > form > select {
+    margin: 0 0 20px 0;
+}
+
+main > section > form > button {
+    margin: 0 0 10px 0;
+}
+
+main > section {
+    display: flex;
+    flex-direction: column;
+}
+
+main > section > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#sec-despesas {
+    border-top: 3px double black;
+}
+
+#sec-extrato {
+    border-top: 3px double black;
+}
