@@ -24,7 +24,7 @@
   //_______________________________________________________________________________________________
 
 
-  
+
   // INTERPRETAÇÃO DE CÓDIGO - 2) *********************************************************************
     //O que ele faz:
         /*  O código calcula o valor total de dois montantes de dinheiro com base no tipo de
@@ -52,5 +52,33 @@
         /*  165
             TIPO DE INVESTIMENTO INFORMADO INCORRETO! */
   //__________________________________________________________________________________________________
+
+
+
+  // INTERPRETAÇÃO DE CÓDIGO - 3) *********************************************************************
+    //O que ele faz:
+        /*  O código analisa um array de números, verifica quais números são pares ou não, cria duas novas
+            arrays e armazena os numeros pares em um array, e numeros impares em outra */
+    
+    //Como ele faz:
+        /*    O código cria 3 arrays: "numeros", "array1" e "array2", sendo que o primeiro array contem
+            os números a serem analisados e os outros dois arrays estão vazios.
+              Então o código percorre cada item (cada número) do array "numeros" e calcula o o resto de sua
+            divisão por 2. Caso o resultado seja igual a 0 (zero), indicando que o número é par, o número 
+            analisado é armazenado no array "array1". Caso o resultado seja diferente de 0 (zero), indicando
+            que o número é ímpar, o número é armazenado no array "array2".
+              Por fim o código imprime no console, utilizando a função "console.log()", três mensagens:
+            a primeira contendo o texto composto pelo trecho "Quantidade total de números" e a quantidade de
+            itens no array "numeros", definido pela função "numeros.length".
+              A segunda mensagem impressa contem apenas a quantidade de itens contidos no array "array1", e a
+            terceira mensagem apresenta a quantidade de itens contidos no array "array2", ambas utilizando-se
+            a propriedade ".length" */
+
+    //O que é impresso no console:
+        /*  Quantidade total de números 14
+            6
+            8 */
+  //__________________________________________________________________________________________________
+
 
 
