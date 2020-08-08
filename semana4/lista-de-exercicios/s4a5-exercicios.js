@@ -81,4 +81,26 @@
   //__________________________________________________________________________________________________
 
 
+  // INTERPRETAÇÃO DE CÓDIGO - 4) *********************************************************************
+    //O que ele faz:
+        /*    O código compara cada número contido no array "numeros" com os valores de duas variáveis,
+            chamadas de "numero1" e "numero2".
+              Caso o número seja menor que o "numero1", o "numero1" assume o valor do número.
+              Caso o número seja maior que o "numero2", o "numero2" assume o valor do número.
+              Por fim, o código imprime duas linhas no console contendo os valores de "numero1" e "numero2"
+            respectivamente.   */
+    
+    //Como ele faz:
+        /*    Primeiramente são definidas a constante "numeros" como um array, e as variáveis "numero1" e "numero2".
+              Em seguida o código utiliza um loop do tipo "for/of" para comparar cada número contido em "numero"
+            com os valores das variáveis "numero1" e "numero2".
+              Utilizando a condicional "if/else" o código verifica se o número é menor que "numero1", e atribui o 
+            valor do número para "numero1" em caso positivo. Da mesma forma verifica se o número é maior que "numero2,
+            e atribui o valor do número a "numero2" em caso positivo.
+              Por fim, utilizando a função "console.log", o código imprime duas linhas no console contendo os valores
+            de "numero1" e "numero2" respectivamente. */
 
+    //O que é impresso no console:
+        /*  25
+            1590 */
+  //__________________________________________________________________________________________________
