@@ -104,3 +104,30 @@
         /*  25
             1590 */
   //__________________________________________________________________________________________________
+
+
+
+
+  // LÓGICA DE PROGRAMAÇÂO - 1) **********************************************************************
+    //3 maneiras:
+        /*  Podemos percorrer uma lista utilizando loops do tipo "for", "for/of" e "while" */
+
+    
+      const lista = ['banana', 'maça', 'beterraba', 'cenoura', 'laranja']
+
+      for (let num = 0; num < lista.length; num++) {
+        let item = lista[num]
+      }
+
+      for(let fruta of lista) {
+        let item = fruta
+      }
+
+      let oFruta = 0
+      while (oFruta < lista.length) {
+        let item = lista[oFruta]
+        oFruta++
+      }
+
+  //__________________________________________________________________________________________________
+
