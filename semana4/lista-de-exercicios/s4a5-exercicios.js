@@ -220,3 +220,44 @@
     console.log(`A diferença entre eles é ${numeroDif}`)
 
   //__________________________________________________________________________________________________
+
+
+
+  // FUNÇÕES - 1) ************************************************************************************
+
+    function verificaNumeros (array) {
+      let numMax = -Infinity
+      let numMax2 = -Infinity
+      let numMin = Infinity
+      let numMin2 = Infinity
+
+      for (let x of array) {
+        if (x > numMax) {
+          numMax = x
+        }
+
+        if (x < numMin) {
+          numMin = x
+        }
+      }
+
+      for(x of array) {
+        if (x > numMax2 && x < numMax) {
+          numMax2 = x
+        }
+        
+        if (x < numMin2 && x > numMin) {
+          numMin2 = x
+        }
+      }
+
+      console.log(`Segundo maior número: ${numMax2}`)
+      console.log(`Segundo menor número: ${numMin2}`)
+    }
+
+    const oNumeros = [1,2,3,4,5,6,7,8,9,10]
+
+    verificaNumeros(oNumeros)
+
+  //__________________________________________________________________________________________________
+
