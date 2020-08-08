@@ -146,3 +146,33 @@
     //d.  true
     //e.  true
   //__________________________________________________________________________________________________
+
+
+
+  // LÓGICA DE PROGRAMAÇÃO - 3) **********************************************************************
+      // Código Original:
+        /*  const quantidadeDeNumerosPares
+            let i = 0
+            while(i <= quantidadeDeNumerosPares) {
+              console.log(i*2)
+            }
+        */
+
+      //  O código original não funciona para definir e imprimir os números pares conforme solicitado.
+      /*    O código apenas multiplica por 2 cada um dos números contidos entre 0 (zero) e o valor de
+          "quantidadeDeNumerosPares", incluindo o valor dessa constante.
+            Além disso, o código também apresenta dois erros: não existe um valor inicial atribuido à 
+          constante "quantidadeDeNumerosPares", e a variável "i" não está sendo incrementada dentro do
+          loop, o que faria o código entrar em loop infinito (não desejado)
+          */  
+      
+      // Código Corrigido:
+          const quantidadeDeNumerosPares = 12
+          let i = 0
+          while(i <= quantidadeDeNumerosPares) {
+            if (i % 2 === 0) {
+              console.log(i)
+            }
+            i++
+          }
+  //__________________________________________________________________________________________________
