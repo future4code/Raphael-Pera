@@ -193,3 +193,30 @@
       tipoTriangulo = "isóceles"
     }
   //__________________________________________________________________________________________________
+
+
+  // LÓGICA DE PROGRAMAÇÃO - 5) **********************************************************************
+    let numeroA = 15
+    let numeroB = 30
+
+    if(numeroA > numeroB) {
+      console.log (`O maior é ${numeroA}`)
+    } else {
+      console.log (`O maior é ${numeroB}`)
+    }
+
+    if (numeroA % numeroB === 0) {
+      console.log(`${numeroA} é divisível por ${numeroB}`)
+      console.log(`${numeroB} não é divisível por ${numeroA}`)
+    } else if (numeroB % numeroA === 0){
+      console.log(`${numeroA} não é divisível por ${numeroB}`)
+      console.log(`${numeroB} é divisível por ${numeroA}`)
+    } else {
+      console.log(`Os números ${numeroA} e ${numeroB} não são divisíveis entre si`)
+    }
+
+    let numeroDif = numeroA - numeroB
+    if (numeroDif < 0) {numeroDif *= -1}
+    console.log(`A diferença entre eles é ${numeroDif}`)
+
+  //__________________________________________________________________________________________________
