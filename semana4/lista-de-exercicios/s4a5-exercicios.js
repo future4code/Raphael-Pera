@@ -345,3 +345,24 @@
       return anonimaPessoa
     }
   //__________________________________________________________________________________________________
+
+
+
+  // FUNÇÕES DE ARRAY - 1) ***************************************************************************
+    let oArray = [
+      { nome: "Pedro", idade: 20 },
+      { nome: "João", idade: 10 },
+      { nome: "Paula", idade: 12 },
+      { nome: "Artur", idade: 89 } 
+    ]
+
+    //a.  
+      let adultos = oArray.filter((elemento) => {
+        return elemento.idade >= 20
+      })
+    
+    //b.
+      let criancas = oArray.filter((elemento) => {
+        return elemento.idade < 20
+      })
+  //__________________________________________________________________________________________________
