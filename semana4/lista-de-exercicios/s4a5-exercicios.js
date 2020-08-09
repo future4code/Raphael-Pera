@@ -326,3 +326,22 @@
 
     console.log(chamadaFilme)
   //__________________________________________________________________________________________________
+
+
+
+  // OBJETOS - 4) ************************************************************************************
+    const umaPessoa = {
+      nome: "Raphael",
+      idade: 37,
+      email: "raphael37@labenu.com.br",
+      endereco: "Avenida Google de Oliveira, 2020",
+    }
+
+    function anonimizarPessoa (objeto) {
+      let anonimaPessoa = {
+        ...umaPessoa,
+        nome: "ANÔNIMO"
+      }
+      return anonimaPessoa
+    }
+  //__________________________________________________________________________________________________
