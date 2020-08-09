@@ -270,3 +270,22 @@
 
     funcaoNaoNomeada()
   //__________________________________________________________________________________________________
+
+
+
+  // OBJETOS - 1) ************************************************************************************
+    /*    Arrays são conjuntos que podem armazenar diversos números, textos, outros arrays, objetos,
+        entre outros.
+          Eles podem ser utilizados para simplificar o armazenamento de diversos valores que poderão
+        ser utilizados posteriormente pelo código em que está presente, uma vez que eles tornam
+        desnecessária a criação de inúmeras variáveis para armazenar esses valores.
+        
+          Objetos constituem-se de um conjunto de propriedades referentes a um elemento. Ao criarmos,
+        por exemplo, um objeto chamado "carro", podemos atribuir diversas prorpiedades a ele como "cor",
+        "modelo" e "preço", e utilizar ou alterar os valores dessas conforme a necessidade da aplicação
+        em desenvolvimento.
+          Objetos são muito uteis quando é necessário armazenar informações de diversos elementos do mesmo
+        tipo. No exemplo do objeto "carro" poderíamos criar diversos objetos identicos, como por exemplo,
+        {modelo: "corolla", cor: "vermelho", preco: 35000.00} ou {modelo: "palio", cor: "azul", preco: "19000.00" }
+          */   
+  //__________________________________________________________________________________________________
