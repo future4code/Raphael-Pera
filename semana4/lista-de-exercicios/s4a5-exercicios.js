@@ -300,3 +300,29 @@
       return {largura: lado1, altura: lado2, perimetro: oPerimetro, area: oArea,}
     }
   //__________________________________________________________________________________________________
+
+
+
+  // OBJETOS - 3) ************************************************************************************
+    let filmeFavorito = {
+      titulo: "A Rede Social",
+      ano: 2011,
+      diretor: "Christopher Nolan",
+      atores: ["John Travolta", "All Pacino"],
+    }
+
+    let atoresString
+    for (let x of filmeFavorito.atores) {
+      if (atoresString === undefined) {
+        atoresString = x
+      } else {
+        atoresString += `, ${x}`
+      }
+    }
+
+    let chamadaFilme = 
+      `Venha assistir ao filme "${filmeFavorito.titulo}", de ${filmeFavorito.ano}, ` +
+        `dirigido por ${filmeFavorito.diretor} e estrelado por ${atoresString}`
+
+    console.log(chamadaFilme)
+  //__________________________________________________________________________________________________
