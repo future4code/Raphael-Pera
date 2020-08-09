@@ -414,3 +414,60 @@
         return (elemento.altura < 1.5 || elemento.idade < 14 || elemento.idade > 60) 
       })
   //__________________________________________________________________________________________________
+
+
+
+  // FUNÇÕES DE ARRAY - 4) ***************************************************************************
+    const consultas = [
+      { nome: "João", genero: "masculino", cancelada: true, dataDaConsulta: "01/10/2019" },
+      { nome: "Pedro", genero: "masculino", cancelada: false, dataDaConsulta: "02/10/2019" },
+      { nome: "Paula", genero: "feminino", cancelada: true, dataDaConsulta: "03/11/2019" },
+      { nome: "Márcia", genero: "feminino", cancelada: false, dataDaConsulta: "04/11/2019" }
+    ]
+
+    let arrayCanceladas = consultas.filter((elemento) => {
+      return elemento.cancelada
+    })
+
+    let arrayNaoCanceladas = consultas.filter((elemento) => {
+      return !elemento.cancelada
+    })
+
+    let canceladas = arrayCanceladas.map((elemento) => {
+      let pronome = ""
+      let lembrar = ""
+      if (elemento.cancelada){
+        if (elemento.genero === "masculino") {
+          pronome = "Sr."
+          lembrar = "lembrá-lo"
+        } else {
+          pronome = "Sra."
+          lembrar = "lembrá-la"
+        }
+      }
+      return  `Olá, ${pronome} ${elemento.nome}. Infelizmente, sua consulta marcada ` +
+              `para o dia ${elemento.dataDaConsulta} foi cancelada. Se quiser, pode entrar em ` +
+              `contato conosco para remarcá-la`
+    })
+
+
+    let naoCanceladas = arrayNaoCanceladas.map((elemento) => {
+      let pronome = ""
+      let lembrar = ""
+      if (!elemento.cancelada){
+        if (elemento.genero === "masculino") {
+          pronome = "Sr."
+          lembrar = "lembrá-lo"
+        } else {
+          pronome = "Sra."
+          lembrar = "lembrá-la"
+        }
+      }
+
+      return  `Olá, ${pronome} ${elemento.nome}. Estamos enviando esta mensagem para ` +
+              `${lembrar} da sua consulta no dia ${elemento.dataDaConsulta}. ` +
+              `Por favor, acuse o recebimento deste e-mail.`
+    })
+
+
+  //__________________________________________________________________________________________________
