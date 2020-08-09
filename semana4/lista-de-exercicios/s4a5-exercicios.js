@@ -289,3 +289,14 @@
         {modelo: "corolla", cor: "vermelho", preco: 35000.00} ou {modelo: "palio", cor: "azul", preco: "19000.00" }
           */   
   //__________________________________________________________________________________________________
+
+
+
+  // OBJETOS - 2) ************************************************************************************
+    function criaRetangulo (lado1, lado2) {
+      let oPerimetro = 2 * (lado1 + lado2)
+      let oArea = lado1 * lado2
+
+      return {largura: lado1, altura: lado2, perimetro: oPerimetro, area: oArea,}
+    }
+  //__________________________________________________________________________________________________
