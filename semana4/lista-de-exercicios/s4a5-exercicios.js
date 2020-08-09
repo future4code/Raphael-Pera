@@ -366,3 +366,28 @@
         return elemento.idade < 20
       })
   //__________________________________________________________________________________________________
+
+
+
+  // FUNÇÕES DE ARRAY - 2) ***************************************************************************
+    const array = [1, 2, 3, 4, 5, 6]
+
+    //a.
+      let arrayMultiplicada = array.map((elemento) => {
+        return elemento * 2
+      })
+
+    //a.
+    let arrayMultiplicada2 = array.map((elemento) => {
+      return String(elemento * 3)
+    })
+      
+    //c.
+      let arrayParImpar = array.map((elemento) => {
+        if(elemento % 2 === 0) {
+          return String(`${elemento} é par`)
+        } else {
+          return String(`${elemento} é ímpar`)
+        }
+      })
+  //__________________________________________________________________________________________________
