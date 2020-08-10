@@ -1,0 +1,150 @@
+* {box-sizing: border-box;}
+
+body {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+
+.tela-inteira {
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header {
+  background-color: rgb(250,250,250);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  border-bottom:1px solid rgb(230,230,230);
+}
+
+header > h2 > span {
+  color: red;
+}
+
+#campoDeBusca {
+  margin: 0 70px 0 0;
+}
+
+main {
+  min-height: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 0 0 0;
+}
+
+
+
+.menu-vertical {
+  flex-basis: 200px;
+  border-right-width: thin;
+}
+
+.menu-vertical > ul {
+  padding: 0;
+}
+.botoes-meunu-vertical {
+  list-style-type: none;
+  padding: 10px 30px;
+}
+
+.botoes-meunu-vertical:hover {
+  background-color: rgb(240,240,240);
+}
+
+hr {
+  border: thin solid rgb(230,230,230);
+  border-width: thin;
+}
+
+.painel-de-videos {
+  padding-left: 1.5%;
+  padding-top: 20px;
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 23.5% 1.5%);
+  grid-template-rows: repeat(2, 270px 20px);
+  background-color: rgb(245,245,245);
+}
+
+.media1 {
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
+
+.media2 {
+  grid-column-start: 3;
+  grid-row-start: 1;
+}
+
+.media3 {
+  grid-column-start: 5;
+  grid-row-start: 1;
+}
+
+.media4 {
+  grid-column-start: 7;
+  grid-row-start: 1;
+}
+
+.media5 {
+  grid-column-start: 1;
+  grid-row-start: 3;
+}
+
+.media6 {
+  grid-column-start: 3;
+  grid-row-start: 3;
+}
+
+.media7 {
+  grid-column-start: 5;
+  grid-row-start: 3;
+}
+
+.media8 {
+  grid-column-start: 7;
+  grid-row-start: 3;
+}
+
+
+.box-pagina-principal {
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  grid-template-columns: 1fr;
+  align-items: start;
+  justify-items: stretch;
+  background-color: rgb(250,250,250);
+  box-shadow: 0 2px 2px rgb(200,200,200);
+}
+
+
+footer {
+  background-color: rgb(230,230,230);
+  font-size: 14px;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-pagina-principal > img {
+  width: 100%;
+  height: 200px;
+}
+
+h4 {
+  margin-left: 20px;
+}
+
