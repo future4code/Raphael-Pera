@@ -1,0 +1,23 @@
+.card-pequeno {
+    border: 1px solid black;
+    display: grid;
+    max-height: 70px;
+    grid-template: 1fr/ 10% 1fr;
+    column-gap: 8px;
+    margin: 15px 0 0 0;
+    padding: 20px 0;
+    align-items: center;
+}
+
+.card-pequeno img {
+    width: 100%;
+    padding: 0 12px;
+}
+
+/* .card-pequeno p {
+    border: 1px solid blue;
+} */
+
+.card-pequeno span {
+    font-weight: bold;
+}

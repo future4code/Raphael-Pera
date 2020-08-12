@@ -1,0 +1,26 @@
+.secao-noticias {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin: 15px 0 0 0;
+    padding: 20px 0;
+}
+
+.secao-noticias h3 {
+    margin: 0 0 15px 0;
+    padding: 0 20px;
+}
+
+.secao-noticias a {
+    text-decoration: none;
+    width: 100%;
+    color: black;
+    padding: 7px 20px;
+}
+
+.secao-noticias a:hover {
+    background-color: rgb(250,250,250);
+    text-decoration: underline;
+}
