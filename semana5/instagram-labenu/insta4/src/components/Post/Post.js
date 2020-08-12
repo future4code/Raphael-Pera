@@ -6,7 +6,11 @@ import {IconeComContador} from '../IconeComContador/IconeComContador'
 import iconeCoracaoBranco from '../../img/favorite-white.svg'
 import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
+import iconeBookEmpty from '../../img/bookmark_empty.svg'
+import iconeBookFull from '../../img/bookmark_full.svg'
+import iconeShare from '../../img/share-black-24dp.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
+import { SecaoShare } from '../SecaoShare/SecaoShare'
 
 class Post extends React.Component {
   state = {
@@ -14,6 +18,8 @@ class Post extends React.Component {
     numeroCurtidas: 0,
     comentando: false,
     numeroComentarios: 0,
+    salvo: false,
+    compartilhando: false,
   }
 
   onClickCurtida = () => {
@@ -34,6 +40,38 @@ class Post extends React.Component {
     })
   }
 
+  onClickBookmark = () => {
+    this.setState({
+      salvo: !this.state.salvo
+    })
+    console.log(`Salvo = ${!this.state.salvo} (${this.props.nomeUsuario})`)
+  }
+
+  onClickShare = () => {
+    this.setState({
+      compartilhando: !this.state.compartilhando
+    })
+  }
+
+  onShareComentario = () => {
+    this.setState({compartilhando: true,})
+  }
+
+  onClickFacebook = () => {
+    console.log(`Post compartilhado no Facebook`)
+    this.setState({compartilhando: false,})
+  }
+
+  onClickInstagram = () => {
+    console.log(`Post compartilhado no Instagram`)
+    this.setState({compartilhando: false,})
+  }
+
+  onClickTwitter = () => {
+    console.log(`Post compartilhado no Twitter`)
+    this.setState({compartilhando: false,})
+  }
+
   onClickComentario = () => {
     this.setState({
       comentando: !this.state.comentando
@@ -51,17 +89,33 @@ class Post extends React.Component {
 
   render() {
     let iconeCurtida
-
     if(this.state.curtido) {
       iconeCurtida = iconeCoracaoPreto
     } else {
       iconeCurtida = iconeCoracaoBranco
     }
 
-    let componenteComentario
+    let iconeBook
+    if(this.state.salvo) {
+      iconeBook = iconeBookFull
+    } else {
+      iconeBook = iconeBookEmpty
+    }
 
+    let componenteComentario
     if(this.state.comentando) {
       componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
+    }
+
+    let componenteShare
+    if (this.state.compartilhando) {
+      componenteShare = 
+        <SecaoShare
+          aoEnviar={this.onShareComentario}
+          clickFacebook ={this.onClickFacebook}
+          clickInstagram ={this.onClickInstagram}
+          clickTwitter ={this.onClickTwitter}
+        />
     }
 
     return (
@@ -80,12 +134,18 @@ class Post extends React.Component {
             valorContador={this.state.numeroCurtidas}
           />
 
-          {/* <IconeComContador
-            icone={iconeComentario}
-            onClickIcone={this.onClickComentario}
-            valorContador={this.state.numeroComentarios}
-          /> */}
-          
+          <IconeComContador
+            icone={iconeBook}
+            onClickIcone={this.onClickBookmark}
+            valorContador={''}
+          />
+
+          <IconeComContador
+            icone={iconeShare}
+            onClickIcone={this.onClickShare}
+            valorContador={''}
+          />
+
           <IconeComContador
             icone={iconeComentario}
             onClickIcone={this.onClickComentario}
@@ -93,6 +153,7 @@ class Post extends React.Component {
           />
         </div>
         {componenteComentario}
+        {componenteShare}
       </div>
     )
   }
