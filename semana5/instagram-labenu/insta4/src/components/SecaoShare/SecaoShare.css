@@ -1,0 +1,20 @@
+
+.share-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.share-input {
+    margin: 10px 0 0 0;
+    width: 80%;
+}
+
+.share-icons {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    /* background-color: chocolate; */
+}
