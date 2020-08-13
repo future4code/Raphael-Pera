@@ -7,23 +7,14 @@ import iconeTwitter from '../../img/icone-twitter-48px.png'
 
 
 export class SecaoShare extends React.Component {
-    state = {
-        inputValue: '',
-    }
-
-    onChangeComentario = (event) => {
-        this.setState({inputValue: event.target.value,})
-        console.log(`Share > inputValue: ${this.state.inputValue}`)
-    }
-
     render() {
         return (
             <div className={'share-container'}>
                 <input
                     className={'share-input'}
                     placeholder={'Compartilhe seu comentário...'}
-                    value={this.state.inputValue}
-                    onChange={this.onChangeComentario}
+                    value={this.props.inputValue}
+                    onChange={this.props.aoEnviar}
                 />
                 <div className={'share-icons'}>
                     <IconeComContador

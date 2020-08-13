@@ -20,6 +20,7 @@ class Post extends React.Component {
     numeroComentarios: 0,
     salvo: false,
     compartilhando: false,
+    shareComent: ``,
   }
 
   onClickCurtida = () => {
@@ -53,23 +54,24 @@ class Post extends React.Component {
     })
   }
 
-  onShareComentario = () => {
-    this.setState({compartilhando: true,})
+  onShareComentario = (event) => {
+    this.setState({shareComent: event.target.value,})
+    console.log(`Share > inputValue (posts.js): ${this.state.shareComent}`)
   }
 
   onClickFacebook = () => {
-    console.log(`Post compartilhado no Facebook`)
-    this.setState({compartilhando: false,})
+    console.log(`Post compartilhado no Facebook com a mensagem: ${this.state.shareComent}`)
+    this.setState({compartilhando: false, shareComent:``})
   }
 
   onClickInstagram = () => {
-    console.log(`Post compartilhado no Instagram`)
-    this.setState({compartilhando: false,})
+    console.log(`Post compartilhado no Instagram com a mensagem: ${this.state.shareComent}`)
+    this.setState({compartilhando: false, shareComent:``})
   }
 
   onClickTwitter = () => {
-    console.log(`Post compartilhado no Twitter`)
-    this.setState({compartilhando: false,})
+    console.log(`Post compartilhado no Twitter com a mensagem: ${this.state.shareComent}`)
+    this.setState({compartilhando: false, shareComent:``})
   }
 
   onClickComentario = () => {
@@ -115,6 +117,7 @@ class Post extends React.Component {
           clickFacebook ={this.onClickFacebook}
           clickInstagram ={this.onClickInstagram}
           clickTwitter ={this.onClickTwitter}
+          inputValue = {this.state.shareComent}
         />
     }
 
