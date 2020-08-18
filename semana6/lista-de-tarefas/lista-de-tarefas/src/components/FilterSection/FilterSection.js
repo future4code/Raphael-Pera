@@ -5,7 +5,8 @@ import { FltSection, FltTitleBox, FltTitle, FltSelect, FltUl, FltLi} from './Fil
 export class FilterSection extends React.Component {
 
     state = {
-        selectValue:'Pendentes',
+        selectValue:'Pendente',
+        tasks: [],
     }
 
     onChangeSelect = (event) => {
@@ -13,26 +14,36 @@ export class FilterSection extends React.Component {
         console.log(`select: ${event.target.value} `)
     }
 
+    onClickTask = (id) => {
+        console.log(`onClickTask: ${id}`)
+        const tasksNova = this.props.tarefas.filter((task) => {
+            return task.id !== id
+        })
+        console.log(tasksNova)
+    }
+
     render() {
-        console.log(this.state.selectValue, this.props.tarefas)
+        console.log('FilterSection:')
+        console.log(this.state.tasks)
         return(
             <FltSection>
                 <FltTitleBox>
                     <FltTitle>Tarefas Pendentes</FltTitle>
                     <FltSelect onChange={this.onChangeSelect} >
+                        <option value={'Pendente'}>Pendentes</option>
+                        <option value={'Completa'}>Completas</option>
                         <option value={'Todas'}>Todas</option>
-                        <option value={'Completas'}>Completas</option>
-                        <option value={'Pendentes'}>Pendentes</option>
                     </FltSelect>
                 </FltTitleBox>
                 <FltUl>
-                    {this.props.tarefas.map((task) => {
-                        return(
-                            task.status === this.state.selectValue &&
-                                <FltLi>{task.tarefa}</FltLi>
+                    {this.props.tarefas.map((task) => {return(
+                        (task.status === this.state.selectValue ||this.state.selectValue === 'Todas') &&
+                            <FltLi onClick={() => this.onClickTask(task.id)} >
+                                {`${task.id}: ${task.tarefa}`}
+                            </FltLi>
                         )
                      })}
-
+                    
                     <FltLi></FltLi>
                     <FltLi></FltLi>
                     <FltLi></FltLi>

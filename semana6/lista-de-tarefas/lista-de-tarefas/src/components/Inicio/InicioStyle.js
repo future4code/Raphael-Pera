@@ -21,3 +21,10 @@ export const Input = styled.input``
 
 export const BtnAdicionar = styled.button``
 
+export const TaskItemComplete = styled.li`
+    text-decoration:line-through;
+`
+
+export const TaskItem = styled.li`
+    
+`
