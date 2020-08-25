@@ -1,19 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
+// import axios from 'axios'
 
 
 const FormBox = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    max-width: 500px;
+    max-width: 600px;
+    margin: 0 auto;
 `
 
 const Label = styled.label`
     box-sizing: border-box;
     margin: 15px 0 0 0;
-    background-color: coral;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -21,11 +21,12 @@ const Label = styled.label`
 
 const Input = styled.input`
     box-sizing: border-box;
-    border: 1px solid lightgray;
+    border: 1px solid rgb(200,200,200);
+    border-radius: 5px;
     width: 100%;
     outline: none;
     margin: 7px 0 0 0;
-    background-color: lightsteelblue;
+    /* background-color: lightsteelblue; */
     padding: 10px 5px;
 `
 
@@ -37,14 +38,14 @@ const Btn = styled.button`
     margin: 15px 0 0 0;
     max-width: 100px;
     padding: 10px 5px;
-    font-size: 16px;
+    font-size: 14px;
 `
 
 
 export class Formulario extends React.Component {
     render(){
         return(
-            <FormBox>
+            <FormBox onKeyDown={this.props.onKeyD} >
                 <Label>
                     Nome:
                     <Input

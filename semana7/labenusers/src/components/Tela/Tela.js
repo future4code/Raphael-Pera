@@ -7,28 +7,29 @@ import { ListaUsers } from '../ListaUsers/ListaUsers'
 const TelaBox = styled.div`
     box-sizing: border-box;
     margin: 0 auto;
-    min-width: 100px;
+    min-width: 250px;
     /* max-width: 50vw; */
-    min-height: 200px;
+    min-height: 100vh;
     border: 1px solid gray;
-    background-color: rgb(240,240,240);
+    display: grid;
+    grid-template-rows: 50px 30px 1fr;
+
 `
 
 const TelaHeader = styled.header`
     box-sizing: border-box;
     width: 100%;
-    min-height: 60px;
     background-color: dodgerblue;
+    display:grid;
+    place-items: center;
 `
 
 const BtnPage = styled.button`
-
+    font-size: 16px;
 `
 
 const TelaMain = styled.main`
     box-sizing: border-box;
-    background-color: coral;
-    /* margin: 20px 0 0 0; */
     padding: 20px;
 `
 
@@ -56,20 +57,38 @@ export class Tela extends React.Component {
         )
 
         request.then((resposta)=>{
-            console.log(`then: ${resposta.data}`)
+            // console.log(`then:`)
+            // console.log(resposta.status)
+            alert(`Cadastro realizado com sucesso (${resposta.status})`)
+            this.setState({inputNome:'', inputEmail:'',})
         }).catch((erro)=>{
-            console.log(`catch: ${erro.message}`)
+            // console.log(`catch:`)
+            // console.log(erro.response.status, erro.data)
+            // console.log(erro.response)
+            switch (erro.response.status) {
+                case 400:
+                    alert(`É necessário informar o Nome e o email (err: ${erro.response.status})`)
+                    break;
+                case 500:
+                    alert(`Nome ou e-mail já constam no cadastro de usuários (err: ${erro.response.status})`)
+                    break;
+                case 404:
+                    alert(`Nome ou e-mail já constam no cadastro de usuários (err: ${erro.response.status})`)
+                    break;
+                default:
+                    break;
+            }
         })
     }
-
 
     onClickEnviar=()=>{
         this.userCreate(this.state.inputNome, this.state.inputEmail)
         console.log('Enviado')
-        // this.setState({
-        //     inputNome:'',
-        //     inputEmail:'',
-        // })
+    }
+
+    onKeyD=(e)=>{
+        // console.log(e.key)
+        e.key === 'Enter' && this.onClickEnviar()
     }
 
     changePage=()=>{this.setState({formOn:!this.state.formOn})}
@@ -83,6 +102,7 @@ export class Tela extends React.Component {
                     inputNomeValue={this.state.inputNome}
                     inputEmailValue={this.state.inputEmail}
                     onClickEnviar={this.onClickEnviar}
+                    onKeyD={this.onKeyD}
                 />)
                 :
                 (<ListaUsers></ListaUsers>)
@@ -90,7 +110,9 @@ export class Tela extends React.Component {
         return(
             <TelaBox>
                 <TelaHeader>HEADER</TelaHeader>
-                <BtnPage onClick={this.changePage}>Troca Page</BtnPage>
+                <BtnPage onClick={this.changePage}>
+                    {this.state.formOn ? 'Lista de usuários' : 'Cadastro de usuários'}
+                </BtnPage>
                 <TelaMain>{conteudo}</TelaMain>
             </TelaBox>
         )
