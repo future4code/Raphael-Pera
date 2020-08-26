@@ -18,11 +18,11 @@ const UserBox = styled.div`
     align-items: center;
     justify-content:space-between;
     border-bottom: 1px solid rgb(200,200,200);
-    padding: 5px 30px;
+    padding: 10px 30px;
 `
 
 const UserName = styled.p`
-    margin-right: 30px;
+    margin:0;
 `
 
 const BtnDel = styled.button`

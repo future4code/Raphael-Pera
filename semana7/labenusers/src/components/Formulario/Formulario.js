@@ -13,7 +13,7 @@ const FormBox = styled.div`
 
 const Label = styled.label`
     box-sizing: border-box;
-    margin: 15px 0 0 0;
+    margin: 25px 0 0 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -35,7 +35,7 @@ const Btn = styled.button`
     border: none;
     background-color: dodgerblue;
     color: white;
-    margin: 15px 0 0 0;
+    margin: 20px 0 0 0;
     max-width: 100px;
     padding: 10px 5px;
     font-size: 14px;
