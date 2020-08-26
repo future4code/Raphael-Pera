@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-// import axios from 'axios'
+import axios from 'axios'
 
 
 const FormBox = styled.div`
@@ -43,15 +43,67 @@ const Btn = styled.button`
 
 
 export class Formulario extends React.Component {
+    state={
+        inputNome:'',
+        inputEmail:'',
+    }
+
+    onChangeInput=(e)=>{
+        this.setState({[e.target.name]: e.target.value})
+        console.log(e.target.name,' : ',e.target.value)
+    }
+
+
+    userCreate = ()=>{
+        const body={name: this.state.inputNome, email: this.state.inputEmail}
+
+        const request = axios.post(
+            'https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users',
+            body,
+            {headers:{Authorization: 'raphael-ribeiro-jackson'}}
+        )
+
+        request.then((resposta)=>{
+            // console.log(`then:`)
+            // console.log(resposta.status)
+            alert(`Cadastro realizado com sucesso (${resposta.status})`)
+            this.setState({inputNome:'', inputEmail:'',})
+        }).catch((erro)=>{
+            // console.log(`catch:`)
+            // console.log(erro.response.status, erro.data)
+            // console.log(erro.response)
+            switch (erro.response.status) {
+                case 400:
+                    alert(`É necessário informar o Nome e o email (err: ${erro.response.status})`)
+                    break;
+                case 500:
+                    alert(`Nome ou e-mail já constam no cadastro de usuários (err: ${erro.response.status})`)
+                    break;
+                case 404:
+                    alert(`Nome ou e-mail já constam no cadastro de usuários (err: ${erro.response.status})`)
+                    break;
+                default:
+                    break;
+            }
+        })
+    }
+
+
+    onKeyD=(e)=>{
+        // console.log(e.key)
+        e.key === 'Enter' && this.userCreate()
+    }
+
+
     render(){
         return(
-            <FormBox onKeyDown={this.props.onKeyD} >
+            <FormBox onKeyDown={this.onKeyD} >
                 <Label>
                     Nome:
                     <Input
                         name={'inputNome'}
-                        onChange={this.props.onChangeInput}
-                        value={this.props.inputNomeValue}
+                        onChange={this.onChangeInput}
+                        value={this.state.inputNome}
                     />
                 </Label>
 
@@ -59,12 +111,12 @@ export class Formulario extends React.Component {
                     E-mail:
                     <Input
                         name={'inputEmail'}
-                        onChange={this.props.onChangeInput}
-                        value={this.props.inputEmailValue}
+                        onChange={this.onChangeInput}
+                        value={this.state.inputEmail}
                     />
                 </Label>
 
-                <Btn onClick={this.props.onClickEnviar}>Enviar</Btn>
+                <Btn onClick={this.userCreate}>Enviar</Btn>
             </FormBox>
         )
     }

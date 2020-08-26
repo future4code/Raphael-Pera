@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
+// import axios from 'axios'
 import { Formulario } from '../Formulario/Formulario'
 import { ListaUsers } from '../ListaUsers/ListaUsers'
 
@@ -46,15 +46,7 @@ const BtnPage = styled.button`
     padding: 7px 14px;
     transition: 0.2s;
 
-
     :hover{
-        background-color: rgb(26, 134, 241);
-        color: white;
-    }
-
-    :active{
-        /* background-color: rgb(16, 114, 212); */
-        /* text-decoration:underline; */
         background-color: rgb(26, 134, 241);
         color: white;
     }
@@ -67,78 +59,15 @@ const TelaMain = styled.main`
 
 export class Tela extends React.Component {
     state = {
-        inputNome:'',
-        inputEmail:'',
         formOn: true,
         listOn: false,
-    }
-
-    onChangeInput=(e)=>{
-        this.setState({[e.target.name]: e.target.value})
-        // console.log(e.target.name,' : ',e.target.value)
-    }
-
-
-    userCreate = (uNome, uEmail)=>{
-        const body={name: uNome, email: uEmail}
-
-        const request = axios.post(
-            'https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users',
-            body,
-            {headers:{Authorization: 'raphael-ribeiro-jackson'}}
-        )
-
-        request.then((resposta)=>{
-            // console.log(`then:`)
-            // console.log(resposta.status)
-            alert(`Cadastro realizado com sucesso (${resposta.status})`)
-            this.setState({inputNome:'', inputEmail:'',})
-        }).catch((erro)=>{
-            // console.log(`catch:`)
-            // console.log(erro.response.status, erro.data)
-            // console.log(erro.response)
-            switch (erro.response.status) {
-                case 400:
-                    alert(`É necessário informar o Nome e o email (err: ${erro.response.status})`)
-                    break;
-                case 500:
-                    alert(`Nome ou e-mail já constam no cadastro de usuários (err: ${erro.response.status})`)
-                    break;
-                case 404:
-                    alert(`Nome ou e-mail já constam no cadastro de usuários (err: ${erro.response.status})`)
-                    break;
-                default:
-                    break;
-            }
-        })
-    }
-
-    onClickEnviar=()=>{
-        this.userCreate(this.state.inputNome, this.state.inputEmail)
-        // console.log('Enviado')
-    }
-
-    onKeyD=(e)=>{
-        // console.log(e.key)
-        e.key === 'Enter' && this.onClickEnviar()
     }
 
     pageCadastro=()=>{this.setState({formOn:true, listOn:false})}
     pageLista=()=>{this.setState({formOn:false, listOn:true})}
 
     render(){
-
-        const conteudo =
-            this.state.formOn ?
-                (<Formulario
-                    onChangeInput={this.onChangeInput}
-                    inputNomeValue={this.state.inputNome}
-                    inputEmailValue={this.state.inputEmail}
-                    onClickEnviar={this.onClickEnviar}
-                    onKeyD={this.onKeyD}
-                />)
-                :
-                (<ListaUsers></ListaUsers>)
+        const conteudo = this.state.formOn ? (<Formulario/>) : (<ListaUsers></ListaUsers>)
 
         return(
             <TelaBox>
