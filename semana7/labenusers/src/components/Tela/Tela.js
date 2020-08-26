@@ -7,13 +7,14 @@ import { ListaUsers } from '../ListaUsers/ListaUsers'
 const TelaBox = styled.div`
     box-sizing: border-box;
     margin: 0 auto;
-    min-width: 295px;
+    width:100vw;
+    /* min-width: 295px; */
     /* max-width: 50vw; */
     min-height: 100vh;
     border: 1px solid gray;
     display: grid;
     grid-template-rows: 90px auto 1fr;
-
+    justify-items: center;
 `
 
 const TelaHeader = styled.header`
@@ -55,6 +56,10 @@ const BtnPage = styled.button`
 const TelaMain = styled.main`
     box-sizing: border-box;
     padding: 20px;
+    /* background-color: lightgreen; */
+    display: flex;
+    justify-content: center;
+    width: 100%;
 `
 
 export class Tela extends React.Component {
