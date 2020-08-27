@@ -1,22 +1,28 @@
 import React from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import { Formulario } from '../Formulario/Formulario'
 
 
 const UserBox = styled.section`
     position: absolute;
-    top: calc(50vh - 200px);
+    top: calc(50vh - 150px);
     left: calc(50vw - 150px);
     min-width: 300px;
-    min-height: 400px;
+    max-width: 400px;
+    min-height: 300px;
     /* margin: 30px auto; */
     border: 1px solid black;
     background-color: rgb(240,240,240);
-    padding: 7px;
+    padding: 5px 15px 15px 15px;
+
     display:flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content:space-evenly;
+    align-items: center;
+    justify-content:flex-start;
+
+    /* display: grid;
+    grid-template-rows: 20px 1fr; */
 `
 
 const BtnClose = styled.span`
@@ -31,11 +37,24 @@ const BtnClose = styled.span`
 `
 
 
+
 export class UserEdit extends React.Component {
+
+    retorno=(valor)=>{
+        this.props.retorno(valor)
+    }
+
     render(){
         return(
             <UserBox>
                 <BtnClose onClick={this.props.close} >x</BtnClose>
+                <Formulario
+                    inputNome={this.props.user.name}
+                    inputEmail={this.props.userEmail}
+                    user={this.props.user}
+                    operation={'put'}
+                    retorno={this.retorno}
+                />
             </UserBox>
         )
     }

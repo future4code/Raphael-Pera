@@ -8,6 +8,7 @@ import editLogo18 from '../../img/edit-black-18dp.svg'
 
 
 const ListaBox = styled.div`
+    width: 90%;
     max-width: 600px;
     margin: 0 auto;
 `
@@ -148,8 +149,7 @@ export class ListaUsers extends React.Component {
         } else {
             const request = axios.get(`${baseURL}/${user.id}`,axiosHeaders)
             request.then((response)=>{
-                console.log(response.data)
-                // this.setState({userEdit:{id: user.id, email: response.data.email}})
+                // console.log(response.data)
                 this.setState({userEdit:{id:user.id, name:response.data.name, email:response.data.email,}})
             }).catch((error)=>{
                 console.log(error.response)
@@ -158,8 +158,13 @@ export class ListaUsers extends React.Component {
     }
 
 
+    retornoEdit=(user)=>{
+        this.showEdit(user)
+        this.getAllUsers()
+    }
+
     render(){
-        console.log('ListaUsers > render')
+        // console.log('ListaUsers > render')
         const userLines = this.state.userList.map((user)=>{
             return(
                 <UserBox key={user.id}>
@@ -180,11 +185,11 @@ export class ListaUsers extends React.Component {
 
                     {user.id === this.state.userEdit.id && (
                         <UserEdit
-                            // userName={user.name}
-                            // // userEmail={'fulana@email.com'}
-                            // userEmail={this.state.userProfile.email !=='' && this.state.userProfile.email}
+                            user={user}
+                            userEmail={this.state.userEdit.email !=='' && this.state.userEdit.email}
                             close={()=>this.showEdit(user)}
                             // userDel={()=>this.userDel(user)}
+                            retorno={()=>this.retornoEdit(user)}
                         ></UserEdit>
                     )}
                 </UserBox>

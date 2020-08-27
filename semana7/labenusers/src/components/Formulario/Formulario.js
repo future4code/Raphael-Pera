@@ -6,9 +6,12 @@ import axios from 'axios'
 const FormBox = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    width: 90%;
     max-width: 600px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    /* background-color: salmon; */
+
 `
 
 const Label = styled.label`
@@ -41,27 +44,34 @@ const Btn = styled.button`
     font-size: 14px;
 `
 
+const baseURL = 'https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users'
+const axiosHeaders = {headers:{Authorization: 'raphael-ribeiro-jackson'}}
+
 
 export class Formulario extends React.Component {
     state={
         inputNome:'',
         inputEmail:'',
+        operation:'post',
+        putUser:'',
+    }
+
+    componentDidMount(){
+        if(this.props.inputNome){this.setState({inputNome: this.props.inputNome})}
+        if(this.props.inputEmail){this.setState({inputEmail: this.props.inputEmail})}
+        if(this.props.operation){this.setState({operation: this.props.operation})}
+        if(this.props.user){this.setState({putUser: this.props.user})}
     }
 
     onChangeInput=(e)=>{
         this.setState({[e.target.name]: e.target.value})
-        console.log(e.target.name,' : ',e.target.value)
+        // console.log(e.target.name,' : ',e.target.value)
     }
 
 
     userCreate = ()=>{
         const body={name: this.state.inputNome, email: this.state.inputEmail}
-
-        const request = axios.post(
-            'https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users',
-            body,
-            {headers:{Authorization: 'raphael-ribeiro-jackson'}}
-        )
+        const request = axios.post(baseURL, body, axiosHeaders)
 
         request.then((resposta)=>{
             // console.log(`then:`)
@@ -89,11 +99,45 @@ export class Formulario extends React.Component {
     }
 
 
-    onKeyD=(e)=>{
-        // console.log(e.key)
-        e.key === 'Enter' && this.userCreate()
+    userEdit=()=>{
+        console.log('userEdit')
+        const body={name: this.state.inputNome, email: this.state.inputEmail}
+        const request = axios.put(`${baseURL}/${this.state.putUser.id}`,body, axiosHeaders)
+
+        request.then((response)=>{
+            alert(`Cadastro atualizado com sucesso (${response.status})`)
+            // this.setState({inputNome:'', inputEmail:'',})
+            this.retorno(true)
+        }).catch((error)=>{
+            console.log(error.response)
+        })
     }
 
+
+    enviar=()=>{
+        switch (this.state.operation) {
+            case 'post':
+                this.userCreate()
+                break;
+            case 'put':
+                this.userEdit()
+                break;
+            default:
+                this.userCreate()
+                break;
+        }
+    }
+
+    onKeyD=(e)=>{
+        // console.log(e.key)
+        // e.key === 'Enter' && this.userCreate()
+        e.key === 'Enter' && this.enviar()
+    }
+
+
+    retorno=(valor)=>{
+        this.props.retorno(valor)
+    }
 
     render(){
         return(
@@ -116,7 +160,8 @@ export class Formulario extends React.Component {
                     />
                 </Label>
 
-                <Btn onClick={this.userCreate}>Enviar</Btn>
+                {/* <Btn onClick={this.userCreate}>Enviar</Btn> */}
+                <Btn onClick={this.enviar}>Enviar</Btn>
             </FormBox>
         )
     }
