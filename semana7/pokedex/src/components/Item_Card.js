@@ -7,12 +7,12 @@ const ItemBox = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 4px;
+    padding: 7px;
     border-radius: 10px;
     /* border: 1px solid rgb(240,240,240); */
     /* box-shadow: 0 2px 2px rgb(200,200,200); */
     transition: 0.3s;
-    /* background-color: rgb(250,250,250); */
+    background-color: white;
 
     :hover{
         /* border: 1px solid rgb(240,240,240); */
@@ -25,6 +25,7 @@ const ItemImg = styled.img`
     width: 100%;
     background-color: rgb(245,245,245);
     border-radius:10px;
+    border: 1px solid rgb(220,220,220)
 `
 
 const ItemNome = styled.p`
@@ -33,7 +34,7 @@ const ItemNome = styled.p`
     margin: 25px 0 15px 0;
     font-size: 24px;
     font-weight: bold;
-    color: rgb(30,30,30)
+    color: rgb(30,30,30);
 `
 
 const ItemPreco = styled.p`
