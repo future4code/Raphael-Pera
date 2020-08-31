@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import { baseUrl, baseHeaders} from './API'
+
 
 const Box = styled.div`
     display: flex;
@@ -37,12 +39,28 @@ export class CreatePL extends React.Component{
     }
 
     onChangeInput=(event)=>{this.setState({inputValue: event.target.value})}
-    onClickCriar=()=>{this.props.onClickCriar(this.state.inputValue); this.setState({inputValue:''})}
+    onClickCriar=()=>{
+        if(this.state.inputValue !==''){
+            // const request = axios.get(`${baseUrl}search?name=${this.state.inputValue}`, baseHeaders)
+            const body={name:this.state.inputValue}
+            const request = axios.post(baseUrl, body, baseHeaders)
+            request
+                .then((response)=>{
+                    console.log(response)
+                    // this.setState({inputValue:''})
+                    this.props.onClickCriar(this.state.inputValue)
+                })
+                .catch((error)=>{
+                    console.log(error)
+                })
+        }
+    }
+
     onKey=(event)=>{event.key==='Enter' && this.onClickCriar()}
     
     render(){
         return(
-            <Box>
+            <Box onKeyDown={this.onKey}> 
                 <Input value={this.state.inputValue} onChange={this.onChangeInput}></Input>
                 <Btn onClick={this.onClickCriar}>Criar</Btn>
             </Box>
