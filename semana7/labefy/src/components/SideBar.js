@@ -44,7 +44,11 @@ export class SideBar extends React.Component{
         this.setState({creatingPL: !this.state.creatingPL})
     }
 
-    onCreate=(inputValue)=>{console.log(inputValue); this.setState({creatingPL: !this.state.creatingPL})}
+    onCreate=(inputValue)=>{
+        console.log(inputValue)
+        this.setState({creatingPL: !this.state.creatingPL})
+        this.props.atualizar()
+    }
 
     render(){
         return(
@@ -52,7 +56,7 @@ export class SideBar extends React.Component{
                 <SideLogo>Labefy</SideLogo>
                 <SideBtn>Início</SideBtn>
                 <SideBtn>Musicas</SideBtn>
-                <SideBtn>Playlists</SideBtn>
+                <SideBtn onClick={this.props.sideBarPLBtn} >Playlists</SideBtn>
                 <SideBtn onClick={this.onClickCriar}>Criar Playlist</SideBtn>
                 {this.state.creatingPL && <CreatePL onClickCriar={this.onCreate} ></CreatePL>}
             </Box>
