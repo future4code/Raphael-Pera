@@ -9,6 +9,8 @@ const Box = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
+    border: 1px solid rgb(100,100,100);
+    border-bottom: 0;
 `
 
 const Btn = styled.button`
