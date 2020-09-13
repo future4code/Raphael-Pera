@@ -45,7 +45,7 @@ export function Card(props){
     const [prof, setProf] = useState({})
 
     useEffect(()=>{
-        console.log('Card',props.profile)
+        // console.log('Card',props.profile)
         setProf(props.profile)
     },[props.profile])
 

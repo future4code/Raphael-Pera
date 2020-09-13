@@ -26,11 +26,11 @@ const BtnHeart = styled.button`
     cursor: pointer;
 `
 
-export function NavBottom(){
+export function NavBottom(props){
     return(
         <Box>
-            <BtnX>X</BtnX>
-            <BtnHeart>V</BtnHeart>
+            <BtnX onClick={props.reject}>X</BtnX>
+            <BtnHeart onClick={props.match}>V</BtnHeart>
         </Box>
     )
 }

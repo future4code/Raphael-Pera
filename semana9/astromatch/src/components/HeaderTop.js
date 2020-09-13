@@ -19,12 +19,15 @@ const Btn = styled.button`
     padding: 5px 10px;
 `
 
-export function HeaderTop(){
+export function HeaderTop(props){
+
+    const btnLista = props.cardORlist === 'card' ? 'Lista' : 'Inicio'
+
     return(
         <Box>
-            <Btn>Limpar</Btn>
+            <Btn onClick={props.clearClick} >Limpar</Btn>
             AstroMatch
-            <Btn>Lista</Btn>
+            <Btn onClick={props.listClick} >{btnLista}</Btn>
         </Box>
     )
 }
