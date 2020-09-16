@@ -1,30 +1,30 @@
 import React from 'react'
 import styled from 'styled-components'
 import { TripCard } from './TripCard'
+import { HeaderTop } from './HeaderTop'
 
 
 const Box = styled.div`
 
 `
 
+// const HeaderTop = styled.header`
+//     background-color: #ADEDDF;
+//     min-height: 130px;
+//     display: flex;
+// `
 
-const HeaderTop = styled.header`
-    background-color: #ADEDDF;
-    min-height: 130px;
-    display: flex;
-`
-
-const LogoBox = styled.div`
-    /* background-color: gray; */
-    color: #550FED;
-    width: auto;
-    padding: 0 15px;
-    display: grid;
-    place-items: center;
-    font-size: 30px;
-    font-weight: bold;
-    text-shadow: -3px 3px 2px #D8C6FF;
-`
+// const LogoBox = styled.div`
+//     /* background-color: gray; */
+//     color: #550FED;
+//     width: auto;
+//     padding: 0 15px;
+//     display: grid;
+//     place-items: center;
+//     font-size: 30px;
+//     font-weight: bold;
+//     text-shadow: -3px 3px 2px #D8C6FF;
+// `
 
 
 const Frase = styled.h2`
@@ -47,9 +47,7 @@ const TripBox = styled.div`
 export const HomePage = () => {
     return(
         <Box>
-            <HeaderTop>
-                <LogoBox>DecoLabe</LogoBox>
-            </HeaderTop>
+            <HeaderTop/>
             <Frase>
                 Viaje com tudo resolvido! Pacotes com reserva flexível e que cumpram com os protocolos de segurança
             </Frase>

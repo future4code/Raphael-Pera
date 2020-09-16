@@ -6,6 +6,7 @@ import { CreateTripPage } from '../components/CreateTripPage'
 import { ListTripPage } from '../components/ListTripPage'
 import { LoginPage } from '../components/LoginPage'
 import { TripDetailsPage } from '../components/TripDetailsPage'
+import { SignUpPage } from '../components/SignUpPage'
 
 
 
@@ -19,6 +20,7 @@ export const Router = () => {
                 <Route exact path="/listtrip" > <ListTripPage/> </Route>
                 <Route exact path="/login" > <LoginPage/> </Route>
                 <Route exact path="/details" > <TripDetailsPage/> </Route>
+                <Route exact path="/signup" > <SignUpPage/> </Route>
                 <Route> <div>ERRO 404</div> </Route>
             </Switch>
         </BrowserRouter>
