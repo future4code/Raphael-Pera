@@ -18,3 +18,8 @@
 p {
   margin: 0;
 }
+
+#msgEmpty {
+  color: red;
+  font-weight: bold;
+}

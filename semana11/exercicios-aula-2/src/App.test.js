@@ -88,7 +88,7 @@ test('teste - limpar input',()=>{
 test('teste - mensagem "Nenhum post!" deve aparecer',()=>{
     const {getByText, getByPlaceholderText, queryByText, queryByDisplayValue} = render(<App/>)
     
-    const msgNoPost = queryByText('Nennhum post!')
+    const msgNoPost = queryByText('Nenhum post!')
     expect(msgNoPost).not.toEqual(null)
 })
 
@@ -104,7 +104,7 @@ test('teste - mensagem "Nenhum post!" NÃO deve aparecer',()=>{
 
     const postNew = getByText('Post teste')
 
-    const msgNoPost = queryByText('Nennhum post!')
+    const msgNoPost = queryByText('Nenhum post!')
     expect(msgNoPost).toEqual(null)
 })
 
@@ -133,8 +133,7 @@ test('teste - Postagem com input vazio NÃO deve criar novo post',()=>{
     fireEvent.change(postInput,{target:{value:''}})
     fireEvent.click(postBtnAdicionar)
 
-    const inputValue = queryByDisplayValue('')
-    expect(inputValue).toEqual(null)
+    const msgNoPost = getByText('Nenhum post!')
 })
 
 
@@ -146,9 +145,6 @@ test('teste - Mensagem de input vazio',()=>{
 
     fireEvent.change(postInput,{target:{value:''}})
     fireEvent.click(postBtnAdicionar)
-
-    const inputValue = queryByDisplayValue('')
-    expect(inputValue).toEqual(null)
     
     const msgEmptyPost = getByText('Por favor informe a mensagem do post')
 })

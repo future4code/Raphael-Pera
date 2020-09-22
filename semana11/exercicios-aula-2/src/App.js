@@ -5,22 +5,29 @@ import { Post } from "./components/Post";
 const App = () => {
   const [postsList, setPostsList] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [inputEmpty, setInputEmpty] = useState(false)
 
   const onChangeInput = event => {
     setInputValue(event.target.value);
   };
 
   const addPost = () => {
-    // Adiciona um post à lista
-    const newPost = {
-      id: Date.now(),
-      text: inputValue,
-      liked: false
-    };
+    if (inputValue !== '') {
+      // Adiciona um post à lista
+      const newPost = {
+        id: Date.now(),
+        text: inputValue,
+        liked: false
+      };
 
-    const newPostsList = [newPost, ...postsList];
+      const newPostsList = [newPost, ...postsList];
 
-    setPostsList(newPostsList);
+      setPostsList(newPostsList);
+      setInputValue('')
+      setInputEmpty(false)
+    } else {
+      setInputEmpty(true)
+    }
   };
 
   const deletePost = postId => {
@@ -52,14 +59,22 @@ const App = () => {
   return (
     <div className="App">
       <div>
-        <input
-          type="text"
-          onChange={onChangeInput}
-          value={inputValue}
-          placeholder={"Novo post"}
-        />
+        <label>
+          {inputEmpty && <span id={'msgEmpty'}>Por favor informe a mensagem do post </span>}
+          <input
+            type="text"
+            onChange={onChangeInput}
+            value={inputValue}
+            placeholder={"Novo post"}
+          />
+        </label>
         <button onClick={addPost}>Adicionar</button>
       </div>
+      <br />
+      {postsList.length <=0 ?
+        <h3>Nenhum post!</h3> :
+        <h3>{`Quantidade de posts: ${postsList.length}`}</h3>
+      }
       <br />
       {postsList.map(post => {
         return (
