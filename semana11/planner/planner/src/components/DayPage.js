@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React /*,{ useState, useEffect }*/ from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
-import { baseUrl } from './APIData'
+// import axios from 'axios'
+// import { baseUrl } from './APIData'
 
 const Box = styled.div`
-    border: 1px solid black;
+    border-left: 1px solid lightgray;
     padding: 10px;
+    min-width: 150px;
+    max-width: 300px;
+    /* flex-grow:1; */
+    :first-child {border-left:0;}
 `
 
-const Header = styled.h4`
+const Header = styled.h3`
     margin-top: 0;
+    text-align: left;
 `
 
 const TaskBox = styled.ul`
@@ -20,16 +25,25 @@ const TaskBox = styled.ul`
 `
 const TaskLine = styled.li`
     margin: 0;
-    padding: 5px;
-    /* display: flex;
-    justify-content: space-between;
-    align-items: center; */
+    padding: 5px 2px;
+    /* display: grid; */
+    /* grid-template-columns: 1fr 25px; */
+    /* align-items: center; */
 
-    display: grid;
-    grid-template-columns: 1fr 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 `
 
-const TaskDelBtn = styled.span`
+const TaskText = styled.div`
+    /* display: flex; */
+    /* min-width: 1%; */
+    /* word-break: break-all; */
+    word-wrap: break-word;
+    overflow: hidden;
+`
+
+const TaskDelBtn = styled.div`
     padding: 1px 3px;
     margin-left: 5px;
     color: red;
@@ -40,64 +54,31 @@ const TaskDelBtn = styled.span`
 
 
 export const DayPage = (props) => {
-    // const [taskList, setTaskList] = useState([])
-
-    useEffect(()=>{
-        // if (props.taskList.length > 0) {
-        //     // setTaskList(props.taskList)
-            console.log('DayPage > useEffect > props.day:', props.day)
-            console.log('DayPage > useEffect > props.taskList:', props.taskList,)
-            // console.log('DayPage > useEffect > taskList2:', taskList)
-        //     verificaTaskList()
-        // }
-    },[props.taskList])
-
-
     const dayName = (dayNum) => {
         switch (dayNum) {
-            case 1: return 'Domingo'; break;
-            case 2: return 'Segunda'; break;
-            case 3: return 'Terça'; break;
-            case 4: return 'Quarta'; break;
-            case 5: return 'Quinta'; break;
-            case 6: return 'Sexta'; break;
-            case 7: return 'Sábado'; break;
-            default: return 'Diversos'; break;
+            case 1: return ['Domingo','dom'];
+            case 2: return ['Segunda', 'seg'];
+            case 3: return ['Terça', 'ter'];
+            case 4: return ['Quarta', 'qua'];
+            case 5: return ['Quinta', 'qui'];
+            case 6: return ['Sexta', 'sex'];
+            case 7: return ['Sábado', 'sab'];
+            default: return ['Todas', ''];
         }
     } 
 
-    // const deleteTask = (task) => {
-    //     axios.delete(`${baseUrl}/${task.id}`)
-    //         .then(response=>{console.log(response)})
-    //         .catch(err=>{console.log(err)})
-    // }
-
-    // const verificaTaskList =()=>{
-    //     console.log('verificaTaskList:', props.taskList)
-    //     props.taskList.forEach(task => {
-    //         console.log('verificaTaskList:', task.id, Number(task.day), task.text)
-    //     });
-
-    //     // const novaLista = props.taskList.map(task=>{
-    //     //     return (
-    //     //         task.day === props.day && task.text
-    //     //     )
-    //     // })
-    //     // console.log('verificaTaskList:', novaLista)
-    // }
 
     return (
         <Box>
-            {/* <Header>Dia da Semana</Header> */}
-            <Header>{dayName(props.day)} </Header>
+            <Header>{dayName(props.day)[0]} </Header>
             <TaskBox>
-                <TaskLine>{props.day !== '' && 'Tarefa Inicial'}</TaskLine>
+                {/* <TaskLine>{props.day !== '' && 'Tarefa Inicial'}</TaskLine> */}
                 {props.taskList.length > 0 &&
                     props.taskList.map(task=>{
                         return (
                             Number(task.day) === props.day &&
                             <TaskLine key={task.id}>
-                                {task.text}
+                                <TaskText>{task.text}</TaskText>
                                 <TaskDelBtn onClick={()=>props.deleteTask(task)}>x</TaskDelBtn>
                             </TaskLine>
                         )
@@ -107,9 +88,8 @@ export const DayPage = (props) => {
                     props.taskList.length > 0 &&
                         props.taskList.map(task=>{
                             return (
-                                task.day === props.day &&
                                 <TaskLine key={task.id}>
-                                    {task.text}
+                                    <TaskText>{`(${dayName(task.day)[1]}) ${task.text}`}</TaskText>
                                     <TaskDelBtn onClick={()=>props.deleteTask(task)}>x</TaskDelBtn>
                                 </TaskLine>
                             )

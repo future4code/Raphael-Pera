@@ -8,7 +8,10 @@ import { DayPage } from './DayPage'
 const Box = styled.div``
 
 const BoxDays = styled.div`
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    /* background-color: lightcoral; */
+    /* min-width: 100vw; */
 `
 
 
@@ -22,7 +25,7 @@ export const HomePage = () => {
     const getTaskList = () => {
         axios.get(baseUrl)
             .then(response=>{
-                console.log(response.data)
+                // console.log(response.data)
                 setTaskList(response.data)
             })
             .catch(err=>{
@@ -34,7 +37,7 @@ export const HomePage = () => {
         const body = {text: inputValue,day: selectValue,}
         // console.log(body)
         axios.post(baseUrl, body)
-            .then(response=>{console.log(response); getTaskList()})
+            .then(response=>{/*console.log(response);*/ getTaskList()})
             .catch(err=>{console.log(err)})
     }
 
@@ -46,7 +49,7 @@ export const HomePage = () => {
 
     return(
         <Box>
-            {taskList.length > 0 && 'taskList setada no estado'}
+            {/* {taskList.length > 0 && 'taskList setada no estado'} */}
             <HeaderTop createTask={createTask} />
             <BoxDays>
                 <DayPage day={1} taskList={taskList} deleteTask={deleteTask}/>
@@ -56,9 +59,8 @@ export const HomePage = () => {
                 <DayPage day={5} taskList={taskList} deleteTask={deleteTask}/>
                 <DayPage day={6} taskList={taskList} deleteTask={deleteTask}/>
                 <DayPage day={7} taskList={taskList} deleteTask={deleteTask}/>
-                <DayPage day={''} taskList={taskList} deleteTask={deleteTask}/>
+                {/* <DayPage day={''} taskList={taskList} deleteTask={deleteTask}/> */}
             </BoxDays>
-            
         </Box>
     )
 }

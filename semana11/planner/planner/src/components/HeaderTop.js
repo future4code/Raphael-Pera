@@ -1,18 +1,38 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, /*useEffect*/} from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
-import { baseUrl } from './APIData'
+// import axios from 'axios'
+// import { baseUrl } from './APIData'
 
 
 const Box = styled.header`
-
+    background-color: whitesmoke;
+    min-width: 100vw;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
 `
 
-const Input = styled.input``
+const Form = styled.div`
+    /* background-color: lightgreen; */
+    min-width: 400px;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+`
 
-const Select = styled.select``
+const Input = styled.input`
+    flex-grow: 1;
+`
 
-const Btn = styled.button``
+const Select = styled.select`
+    margin-left: 3px;
+`
+
+const Btn = styled.button`
+    margin-left: 3px;
+`
 
 
 export const HeaderTop = (props) => {
@@ -28,11 +48,20 @@ export const HeaderTop = (props) => {
     //         .catch(err=>{console.log(err)})
     // }
 
+    const createTask=()=>{
+        if (inputValue !== '') {
+            props.createTask(inputValue, selectValue)
+            // setInputValue('')
+        }
+    }
+
 
     const inputChange = (event) => {
         setInputValue(event.target.value)
         // console.log('HeaderTop > inputChange', event.target.value)
     }
+
+    const enterTask = (event) => {event.key === 'Enter' && createTask()}
 
     const selectChange = (event) => {
         setSelectValue(event.target.value)
@@ -40,22 +69,24 @@ export const HeaderTop = (props) => {
     }
 
     return (
-        <Box>
-            <Input
-                placeholder={'Descrição da tarefa'}
-                onChange={inputChange}
-                value={inputValue}
-            />
-            <Select onChange={selectChange} value={selectValue}>
-                <option value={'1'}>Domingo</option>
-                <option value={'2'}>Segunda</option>
-                <option value={'3'}>Terça</option>
-                <option value={'4'}>Quarta</option>
-                <option value={'5'}>Quinta</option>
-                <option value={'6'}>Sexta</option>
-                <option value={'7'}>Sábado</option>
-            </Select>
-            <Btn onClick={()=>props.createTask(inputValue, selectValue) } >Criar Tarefa</Btn>
+        <Box onKeyDown={enterTask} >
+            <Form>
+                <Input
+                    placeholder={'Descrição da tarefa'}
+                    onChange={inputChange}
+                    value={inputValue}
+                />
+                <Select onChange={selectChange} value={selectValue}>
+                    <option value={'1'}>Domingo</option>
+                    <option value={'2'}>Segunda</option>
+                    <option value={'3'}>Terça</option>
+                    <option value={'4'}>Quarta</option>
+                    <option value={'5'}>Quinta</option>
+                    <option value={'6'}>Sexta</option>
+                    <option value={'7'}>Sábado</option>
+                </Select>
+                <Btn onClick={createTask} >Criar Tarefa</Btn>
+            </Form>
         </Box>
     )
 }
