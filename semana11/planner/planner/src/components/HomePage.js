@@ -34,7 +34,7 @@ export const HomePage = () => {
     }
 
     const createTask = (inputValue, selectValue) => {
-        const body = {text: inputValue,day: selectValue,}
+        const body = {text: inputValue, day: selectValue,}
         // console.log(body)
         axios.post(baseUrl, body)
             .then(response=>{/*console.log(response);*/ getTaskList()})
