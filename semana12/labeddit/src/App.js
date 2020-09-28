@@ -3,6 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 import { AppContainer } from './components/AppContainer';
 import 'fontsource-roboto';
+import SignIn from './components/LoginMUI';
+import { LoginTeste } from './components/LoginTeste';
+import { Login } from './components/Login';
 
 function App() {
   return (
@@ -21,7 +24,10 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <AppContainer/>
+      {/* <AppContainer/> */}
+      {/* <SignIn></SignIn> */}
+      {/* <LoginTeste/> */}
+      <Login></Login>
     </div>
   );
 }
