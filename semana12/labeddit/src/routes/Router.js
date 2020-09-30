@@ -7,11 +7,11 @@ import { PostPage } from '../pages/PostPage/PostPage'
 import { SignUpPage } from '../pages/SignUpPage/SignUpPage'
 
 
-export const Router = () => {
+export const Router = (props) => {
     return(
         <Switch>
             <Route exact path={['/login', '/']}>
-                <LoginPage/>
+                <LoginPage setButtonName={props.setButtonName} />
             </Route>
             <Route exact path={'/signup'}>
                 <SignUpPage/>

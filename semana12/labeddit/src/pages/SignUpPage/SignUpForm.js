@@ -3,17 +3,18 @@ import { Button, TextField} from '@material-ui/core'
 import styled from 'styled-components'
 import { Form, ButtonContainer } from './styled'
 import { useForm } from '../../hooks/useForm'
-import { login } from '../../services/user'
+import { signUp } from '../../services/user'
 import { useHistory } from 'react-router-dom'
+import { useUnprotectPage } from '../../hooks/useUnprotectPage'
 
 
-export const LoginForm = (props) => {
+export const SignUpForm = () => {
+    useUnprotectPage()
     const history = useHistory()
-    const [form, handleInputChange] = useForm({email:'', password:''})
+    const [form, handleInputChange] = useForm({email:'', password:'', username:''})
 
     const onClickSubmit = event => {
         event.preventDefault()
-
         const inputPassword = document.getElementById('input-password')
         const passwordIsValid = inputPassword.checkValidity()
         inputPassword.reportValidity()
@@ -22,13 +23,29 @@ export const LoginForm = (props) => {
         const emailIsValid = inputEmail.checkValidity()
         inputEmail.reportValidity()
 
-        if (passwordIsValid && emailIsValid) {
-            login(form, history, props.setButtonName)
+        const inputName = document.getElementById('input-name')
+        const nameIsValid = inputName.checkValidity()
+        inputName.reportValidity()
+
+        if (passwordIsValid && emailIsValid && nameIsValid){
+            signUp(form, history)
         }
     }
 
     return(
         <Form>
+            <TextField
+                label={'Nome'}
+                variant={'outlined'}
+                name={'username'}
+                onChange={handleInputChange}
+                value={form.name}
+                margin={'normal'}
+                required
+                autoFocus
+                id={'input-name'}
+                size="small"
+            />
             <TextField
                 label={'Email'}
                 variant={'outlined'}
@@ -38,7 +55,6 @@ export const LoginForm = (props) => {
                 value={form.email}
                 margin={'normal'}
                 required
-                autoFocus
                 id={'input-email'}
                 size="small"
             />
@@ -64,7 +80,7 @@ export const LoginForm = (props) => {
                     type={'submit'}
                     fullWidth
                 >
-                    Login
+                    Cadastrar
                 </Button>
             </ButtonContainer>
         </Form>

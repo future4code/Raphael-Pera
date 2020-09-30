@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import { useState } from 'react'
 
 export const useForm = (initialState) => {
     const [form, setForm] = useState(initialState)
@@ -7,6 +7,6 @@ export const useForm = (initialState) => {
         const {value, name} = event.target
         setForm({...form, [name]: value})
     }
-
+    // console.log('useForm', form)
     return [form, handleInputChange]
 }
