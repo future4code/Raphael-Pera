@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const PageBox = styled.div`
     display: flex;
     justify-content: center;
+    padding: 65px 0 0 0;
 `
 
 export const FormBox = styled.div`

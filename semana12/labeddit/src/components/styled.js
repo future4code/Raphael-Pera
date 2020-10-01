@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const AppBarContainer = styled.div`
-    margin-bottom: 65px;
+    /* margin-bottom: 65px; */
 `
 
 export const ButtonsContainer = styled.div`

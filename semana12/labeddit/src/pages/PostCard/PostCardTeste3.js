@@ -18,11 +18,10 @@ import {
 import { dateFormat } from '../../hooks/TimeStamp'
 
 
-export const PostPage = (props) => {
+export const PostCardTeste3 = (props) => {
 
     return(
         <CardContainer>
-            Post Page
             <CardSideBar>
                 <SideBarUp>up</SideBarUp>
                 <SideBarCount>125</SideBarCount>
