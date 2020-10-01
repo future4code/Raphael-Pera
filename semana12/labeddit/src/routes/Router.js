@@ -20,7 +20,7 @@ export const Router = (props) => {
                 <FeedPage/>
             </Route>
             <Route exact path={'/feed/:id'}>
-                <PostPage/>
+                <FeedPage/>
             </Route>
             <Route>
                 <ErrorPage/>

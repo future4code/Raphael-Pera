@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     CardContainer,
     CardSideBar,
@@ -16,47 +16,35 @@ import {
     SideBarCount
 } from './styled'
 import { dateFormat } from '../../hooks/TimeStamp'
-
+import { useProtectPage } from '../../hooks/useProtectPage'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
+import { baseUrl } from '../../constants/url'
 
 export const PostPage = (props) => {
-
+    useProtectPage()
+    console.log('PostPage', props.postDetails)
+    const {username, createdAt, title, text, commentsCount, votesCount} = props.postDetails
     return(
         <CardContainer>
-            Post Page
             <CardSideBar>
                 <SideBarUp>up</SideBarUp>
-                <SideBarCount>125</SideBarCount>
+                <SideBarCount>{votesCount}</SideBarCount>
                 <SideBarDown>down</SideBarDown>
             </CardSideBar>
             <CardContent>
                 <CardHeader>
-                    <HeaderMsg>Postado por </HeaderMsg>
-                    {/* <HeaderUserName>{`${props.post.username}`}</HeaderUserName> */}
-                    <HeaderUserName>Bananinha com açai</HeaderUserName>
-                    {/* <HeaderMsg> em </HeaderMsg> */}
-                    <HeaderCreatedAt> {dateFormat(1601408616670)} </HeaderCreatedAt>
+                    <HeaderMsg> Postado por </HeaderMsg>
+                    <HeaderUserName> {`${username}`} </HeaderUserName>
+                    <HeaderCreatedAt> {dateFormat(createdAt)} </HeaderCreatedAt>
                 </CardHeader>
                 <CardText>
-                    <TextTitle>Esse é o título</TextTitle>
-                    <Text>
-                        sdssd asdfasdfasdf sadfas df asdf a sdfasdf asdf asdf asdf  a sdf asdf as df
-                        asdfsadf asdfasdf asdfasdf dsfasdff wer wet wertwertwe rt we rt wertwertwe
-                        wertwertwert wertwert ewrt.
-                        sdssd asdfasdfasdf sadfas df asdf a sdfasdf asdf asdf asdf  a sdf asdf as df
-                        asdfsadf asdfasdf asdfasdf dsfasdff wer wet wertwertwe rt we rt wertwertwe
-                        wertwertwert wertwert ewrt.
-                        sdssd asdfasdfasdf sadfas df asdf a sdfasdf asdf asdf asdf  a sdf asdf as df
-                        asdfsadf asdfasdf asdfasdf dsfasdff wer wet wertwertwe rt we rt wertwertwe
-                        wertwertwert wertwert ewrt.
-                        sdssd asdfasdfasdf sadfas df asdf a sdfasdf asdf asdf asdf  a sdf asdf as df
-                        asdfsadf asdfasdf asdfasdf dsfasdff wer wet wertwertwe rt we rt wertwertwe
-                        wertwertwert wertwert ewrt.
-                        sdssd asdfasdfasdf sadfas df asdf a sdfasdf asdf asdf asdf  a sdf asdf as df
-                        asdfsadf asdfasdf asdfasdf dsfasdff wer wet wertwertwe rt we rt wertwertwe
-                        wertwertwert wertwert ewrt.
-                    </Text>
+                    <TextTitle>{title}</TextTitle>
+                    <Text>{text}</Text>
                 </CardText>
-                <CardFooter>59 comentários</CardFooter>
+                <CardFooter>
+                    {`${commentsCount} comentários`}
+                </CardFooter>
             </CardContent>
         </CardContainer>
     )

@@ -26,7 +26,7 @@ export const dateFormat = (timeStamp) => {
     } else if (hours === 1) {
         msg = 'há 1 hora'
     } else if (hours < 24) {
-        msg = `há ${hours} horas`
+        msg = `há ${Math.ceil(hours)} horas`
     } else if (days === 1) {
         msg = 'há 1 dia'
     } else if (days < 30) {

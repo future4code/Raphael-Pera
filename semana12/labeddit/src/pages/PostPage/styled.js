@@ -49,7 +49,6 @@ export const CardContainer = styled.div`
         display: grid;
         place-items: center;
     `
-
 //--------------
 
 export const CardContent = styled.div`
@@ -113,11 +112,12 @@ export const CardContent = styled.div`
     `
 //--------------
 
-export const Item = styled.p`
-    margin: 3px 0;
-`
 
-export const ItemBold = styled.span`
-    font-weight: bold;
-    margin-right: 5px;
-`
+//CommentsContainer and sons styles
+    export const FormNewComment = styled.form`
+
+    `
+
+     
+
+//--------------

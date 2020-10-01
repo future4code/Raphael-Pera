@@ -17,9 +17,7 @@ import {
 } from './styled'
 import { dateFormat } from '../../hooks/TimeStamp'
 
-
 export const PostCardTeste3 = (props) => {
-
     return(
         <CardContainer>
             <CardSideBar>
@@ -30,9 +28,7 @@ export const PostCardTeste3 = (props) => {
             <CardContent>
                 <CardHeader>
                     <HeaderMsg>Postado por </HeaderMsg>
-                    {/* <HeaderUserName>{`${props.post.username}`}</HeaderUserName> */}
                     <HeaderUserName>Bananinha com açai</HeaderUserName>
-                    {/* <HeaderMsg> em </HeaderMsg> */}
                     <HeaderCreatedAt> {dateFormat(1601408616670)} </HeaderCreatedAt>
                 </CardHeader>
                 <CardText>

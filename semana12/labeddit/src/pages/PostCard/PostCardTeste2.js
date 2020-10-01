@@ -25,21 +25,18 @@ export const PostCardTeste2 = (props) => {
                 <SideBarCount>{props.post.votesCount}</SideBarCount>
                 <SideBarDown>down</SideBarDown>
             </CardSideBar>
-            <CardContent>
+            <CardContent onClick={props.onClick}>
                 <CardHeader>
-                    <HeaderMsg>Postado por </HeaderMsg>
-                    <HeaderUserName>{`${props.post.username}`}</HeaderUserName>
-                    <HeaderCreatedAt>{dateFormat(props.post.createdAt)}</HeaderCreatedAt>
+                    <HeaderMsg> Postado por </HeaderMsg>
+                    <HeaderUserName> {`${props.post.username}`} </HeaderUserName>
+                    <HeaderCreatedAt> {dateFormat(props.post.createdAt)} </HeaderCreatedAt>
                 </CardHeader>
                 <CardText>
                     <TextTitle>{props.post.title}</TextTitle>
                     <Text>{props.post.text}</Text>
                 </CardText>
                 <CardFooter>
-                    {!props.post.commentCount ? 
-                        `0 comentários` :
-                        `${props.post.commentCount} comentários`
-                    }
+                    {`${props.post.commentsCount} comentários`}
                 </CardFooter>
             </CardContent>
         </CardContainer>

@@ -49,7 +49,6 @@ export const CardContainer = styled.div`
         display: grid;
         place-items: center;
     `
-
 //--------------
 
 export const CardContent = styled.div`
