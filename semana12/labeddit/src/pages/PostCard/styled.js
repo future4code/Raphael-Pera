@@ -4,9 +4,9 @@ export const CardContainer = styled.div`
     background-color: whitesmoke;
     border: 1px solid lightgray;
     border-radius: 5px;
-    /* width: 300px; */
     width: 100%;
-    /* height: auto; */
+    min-width: 280px;
+    max-width: 700px;
     text-align: left;
     margin: 10px;
     
@@ -30,7 +30,6 @@ export const CardContainer = styled.div`
         padding: 3px 0;
         cursor: pointer;
         :hover{background-color: rgb(225,225,225);}
-        /* text-align: center; */
         display: grid;
         place-items: center;
     `
@@ -45,7 +44,6 @@ export const CardContainer = styled.div`
         padding: 3px 0;
         cursor: pointer;
         :hover{background-color: rgb(225,225,225);}
-        /* text-align: center; */
         display: grid;
         place-items: center;
     `
@@ -54,8 +52,8 @@ export const CardContainer = styled.div`
 export const CardContent = styled.div`
     display: flex;
     flex-direction: column;
-    /* padding: 10px; */
     cursor: pointer;
+    width: 100%;
 `
 
 //CardHeader and sons styles
@@ -74,7 +72,6 @@ export const CardContent = styled.div`
 
     export const HeaderUserName = styled.h4`
         display:inline;
-        /* margin-right: 15px; */
     `
 
     export const HeaderCreatedAt = styled.span`
@@ -90,13 +87,19 @@ export const CardContent = styled.div`
         padding: 10px;
         max-height: 200px;
         overflow: auto;
+        width: 100%;
     `
 
     export const TextTitle = styled.h3`
+        /* background-color: lightcoral; */
         margin:0;
+        word-wrap: break-word;
     `
 
-    export const Text = styled.p``
+    export const Text = styled.p`
+        /* background-color: lightgreen; */
+        word-wrap: break-word;
+    `
 //--------------
 
 
@@ -111,12 +114,3 @@ export const CardContent = styled.div`
         border-top: 1px solid rgb(245,245,245);
     `
 //--------------
-
-export const Item = styled.p`
-    margin: 3px 0;
-`
-
-export const ItemBold = styled.span`
-    font-weight: bold;
-    margin-right: 5px;
-`

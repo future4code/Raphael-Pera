@@ -4,11 +4,12 @@ import { useHistory } from 'react-router-dom'
 import { baseUrl } from '../../constants/url'
 import { useProtectPage } from '../../hooks/useProtectPage'
 import { goToPostPage } from '../../routes/Cordinator'
-import { PostCardTeste2 } from '../PostCard/PostCardTeste2'
+import { PostCard } from '../PostCard/PostCard'
 import { PostCardTeste3 } from '../PostCard/PostCardTeste3'
-import { FeedContainer, PostsContainer } from './styled'
+import { AddPostButton, FeedContainer, PostsContainer } from './styled'
 import { useParams } from 'react-router-dom'
 import { PostPage } from '../PostPage/PostPage'
+import { Add } from '@material-ui/icons'
 
 export const FeedPage = () => {
     useProtectPage()
@@ -47,7 +48,10 @@ export const FeedPage = () => {
             if(posts.length > 0) {
                 return( posts.map((post, index) => {
                     // return <PostCardTeste key={post.id} post={post}/>
-                    return <PostCardTeste2 key={post.id} post={post} onClick={()=>goToPostPage(history, post.id)} />
+                    return <PostCard key={post.id} post={post} onClick={()=>goToPostPage(history, post.id)} />
+                    // if (index < 15) {
+                    //     return <PostCardTeste2 key={post.id} post={post} onClick={()=>goToPostPage(history, post.id)} />
+                    // }
                 }) )
             } else {
                 // Substituir o 'Nenhum post' por uma página de loading
@@ -64,13 +68,26 @@ export const FeedPage = () => {
     },[id])
 
     return(
-        <FeedContainer>
-            {/* <button onClick={getPosts} >GetPosts </button> */}
-            {/* {posts.length > 0 && ` posts carregados (${posts.length})`} */}
-            <PostsContainer>
-                {contentRender()}
-                {/* <PostCardTeste3></PostCardTeste3> */}
-            </PostsContainer>
-        </FeedContainer>
+        <>
+            {/* <FeedContainer> */}
+                            {/* <button onClick={getPosts} >GetPosts </button> */}
+                            {/* {posts.length > 0 && ` posts carregados (${posts.length})`} */}
+                {/* <PostsContainer> */}
+                    {/* {contentRender()} */}
+                    {/* <PostCardTeste3></PostCardTeste3>
+                </PostsContainer>
+                <AddPostButton> <Add/> </AddPostButton>
+            </FeedContainer> */}
+
+            <FeedContainer>
+                {/* <button onClick={getPosts} >GetPosts </button> */}
+                {/* {posts.length > 0 && ` posts carregados (${posts.length})`} */}
+                {/* <PostsContainer> */}
+                    {contentRender()}
+                    {/* <PostCardTeste3></PostCardTeste3> */}
+                {/* </PostsContainer> */}
+                {!id && <AddPostButton> <Add/> </AddPostButton>}
+            </FeedContainer>
+        </>
     )
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
     CardContainer,
     CardSideBar,
@@ -17,9 +17,23 @@ import {
 } from './styled'
 import { dateFormat } from '../../hooks/TimeStamp'
 
-export const PostCardTeste2 = (props) => {
+export const PostCard = (props) => {
+
+    const defineWidth = () => {
+        function updateSize() {
+            const cardContentWidth = (document.getElementById('card-container').clientWidth - 70) + 'px'
+            document.getElementById('text-container').style.width = cardContentWidth
+            document.getElementById('title-container').style.width = cardContentWidth
+
+        }
+        window.addEventListener('resize', updateSize);
+        updateSize()
+    }
+
+    useEffect(()=>{ defineWidth() },[])
+
     return(
-        <CardContainer>
+        <CardContainer id={`card-container`}>
             <CardSideBar>
                 <SideBarUp>up</SideBarUp>
                 <SideBarCount>{props.post.votesCount}</SideBarCount>
@@ -32,8 +46,8 @@ export const PostCardTeste2 = (props) => {
                     <HeaderCreatedAt> {dateFormat(props.post.createdAt)} </HeaderCreatedAt>
                 </CardHeader>
                 <CardText>
-                    <TextTitle>{props.post.title}</TextTitle>
-                    <Text>{props.post.text}</Text>
+                    <TextTitle id={`title-container`}> {props.post.title} </TextTitle>
+                    <Text id={`text-container`}> {props.post.text} </Text>
                 </CardText>
                 <CardFooter>
                     {`${props.post.commentsCount} comentários`}

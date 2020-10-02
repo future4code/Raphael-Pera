@@ -23,10 +23,24 @@ import { baseUrl } from '../../constants/url'
 
 export const PostPage = (props) => {
     useProtectPage()
-    console.log('PostPage', props.postDetails)
+    // console.log('PostPage', props.postDetails)
     const {username, createdAt, title, text, commentsCount, votesCount} = props.postDetails
+
+    const defineWidth = () => {
+        function updateSize() {
+            const cardContentWidth = (document.getElementById('card-container').clientWidth - 70) + 'px'
+            document.getElementById('text-container').style.width = cardContentWidth
+            document.getElementById('title-container').style.width = cardContentWidth
+
+        }
+        window.addEventListener('resize', updateSize);
+        updateSize()
+    }
+
+    useEffect(()=>{ defineWidth() },[])
+
     return(
-        <CardContainer>
+        <CardContainer id={`card-container`}>
             <CardSideBar>
                 <SideBarUp>up</SideBarUp>
                 <SideBarCount>{votesCount}</SideBarCount>
@@ -39,8 +53,8 @@ export const PostPage = (props) => {
                     <HeaderCreatedAt> {dateFormat(createdAt)} </HeaderCreatedAt>
                 </CardHeader>
                 <CardText>
-                    <TextTitle>{title}</TextTitle>
-                    <Text>{text}</Text>
+                    <TextTitle id={`title-container`}> {title} </TextTitle>
+                    <Text id={`text-container`}> {text} </Text>
                 </CardText>
                 <CardFooter>
                     {`${commentsCount} comentários`}
