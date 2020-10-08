@@ -11,5 +11,9 @@ export const goToLogin = (history)=>{
 }
 
 export const goToPostPage = (history, id)=>{
-    history.push(`feed/${id}`)
+    history.push(`/feed/${id}`)
+}
+
+export const goToPostPageAdd = (history) => {
+    history.push('/postadd')
 }

@@ -33,3 +33,7 @@ export const signUp = (body, history) => {
         })
 }
 
+
+export const comment = (body) => {
+    console.log('comment', body)
+}

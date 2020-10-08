@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { baseUrl } from '../../constants/url'
 import { useProtectPage } from '../../hooks/useProtectPage'
-import { goToPostPage } from '../../routes/Cordinator'
+import { goToPostPage, goToPostPageAdd } from '../../routes/Cordinator'
 import { PostCard } from '../PostCard/PostCard'
 import { PostCardTeste3 } from '../PostCard/PostCardTeste3'
 import { AddPostButton, FeedContainer, PostsContainer } from './styled'
@@ -30,10 +30,10 @@ export const FeedPage = () => {
                     // console.log(response.data.posts)
                     // setPosts(response.data.posts)
                     if(!id){
-                        console.log('FeedPage > posts', response.data.posts)
+                        // console.log('FeedPage > posts', response.data.posts)
                         setPosts(response.data.posts)
                     } else {
-                        console.log('FeedPage > details', response.data.post)
+                        // console.log('FeedPage > details', response.data.post)
                         setPostDetails(response.data.post)
                     }
                 })
@@ -44,15 +44,21 @@ export const FeedPage = () => {
     }
 
     const contentRender = () => {
+        // console.log('contentRender')
         if (!id) {
             if(posts.length > 0) {
-                return( posts.map((post, index) => {
-                    // return <PostCardTeste key={post.id} post={post}/>
-                    return <PostCard key={post.id} post={post} onClick={()=>goToPostPage(history, post.id)} />
-                    // if (index < 15) {
-                    //     return <PostCardTeste2 key={post.id} post={post} onClick={()=>goToPostPage(history, post.id)} />
-                    // }
-                }) )
+                let novaArray=[]
+
+                novaArray = posts.filter((post, index) => {
+                    // return (<PostCard key={index} post={post} onClick={()=>goToPostPage(history, post.id)} />)
+                    return typeof(post.title) === 'string'
+                }).map((post, index) => {
+                        return (<PostCard key={index} post={post} onClick={()=>goToPostPage(history, post.id)} />)
+                })
+
+                // console.log('novaArray: ', novaArray)
+                return(novaArray)
+
             } else {
                 // Substituir o 'Nenhum post' por uma página de loading
                 return 'Nenhum post'
@@ -69,24 +75,10 @@ export const FeedPage = () => {
 
     return(
         <>
-            {/* <FeedContainer> */}
-                            {/* <button onClick={getPosts} >GetPosts </button> */}
-                            {/* {posts.length > 0 && ` posts carregados (${posts.length})`} */}
-                {/* <PostsContainer> */}
-                    {/* {contentRender()} */}
-                    {/* <PostCardTeste3></PostCardTeste3>
-                </PostsContainer>
-                <AddPostButton> <Add/> </AddPostButton>
-            </FeedContainer> */}
-
             <FeedContainer>
-                {/* <button onClick={getPosts} >GetPosts </button> */}
-                {/* {posts.length > 0 && ` posts carregados (${posts.length})`} */}
-                {/* <PostsContainer> */}
-                    {contentRender()}
-                    {/* <PostCardTeste3></PostCardTeste3> */}
-                {/* </PostsContainer> */}
-                {!id && <AddPostButton> <Add/> </AddPostButton>}
+                {contentRender()}
+                {/* <PostCardTeste3/> */}
+                {!id && <AddPostButton onClick={()=>goToPostPageAdd(history)} > <Add/> </AddPostButton>}
             </FeedContainer>
         </>
     )

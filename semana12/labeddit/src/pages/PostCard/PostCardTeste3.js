@@ -13,59 +13,45 @@ import {
     Text,
     SideBarUp,
     SideBarDown,
-    SideBarCount
+    SideBarCount,
+    IconContainer,
 } from './styled'
 import { dateFormat } from '../../hooks/TimeStamp'
 
 
 
-export const PostCardTeste3 = () => {
+export const PostCardTeste3 = (props) => {
+    const idNum = props.idNum
 
     const defineWidth = () => {
         function updateSize() {
-            const cardContentWidth = (document.getElementById('card-container').clientWidth - 70) + 'px'
-            document.getElementById('text-container').style.width = cardContentWidth
-            document.getElementById('title-container').style.width = cardContentWidth
+            const cardContentWidth = (document.getElementById(`card-container-${idNum}`).clientWidth - 82) + 'px'
+            document.getElementById(`text-container-${idNum}`).style.width = cardContentWidth
+            document.getElementById(`title-container-${idNum}`).style.width = cardContentWidth
         }
         window.addEventListener('resize', updateSize);
         updateSize()
     }
 
-    useEffect(()=>{ defineWidth() },[])
+    useEffect(()=>{ defineWidth() },[props])
 
     return(
-        <CardContainer id={`card-container`}>
+        <CardContainer id={`card-container-${idNum}`}>
             <CardSideBar>
-                <SideBarUp>up</SideBarUp>
-                <SideBarCount> 125 </SideBarCount>
-                <SideBarDown>down</SideBarDown>
+                <IconContainer> <SideBarUp style={{ fontSize: 26 }} /*fontSize='large'*/ /> </IconContainer>
+                <SideBarCount>125</SideBarCount>
+                <IconContainer> <SideBarDown style={{ fontSize: 26 }} /> </IconContainer>
             </CardSideBar>
             <CardContent>
                 <CardHeader>
                     <HeaderMsg>Postado por </HeaderMsg>
                     <HeaderUserName>Bananinha com açai </HeaderUserName>
-                    <HeaderCreatedAt> {dateFormat(1601408616670)} </HeaderCreatedAt>
+                    <HeaderCreatedAt> {dateFormat(1601408616670)} {` (id: ${idNum})`}</HeaderCreatedAt>
                 </CardHeader>
                 <CardText>
-                    <TextTitle id={`title-container`}>Esse é o título sçldkjaçsldkfjlçaskdjflçaskdjfçlaskdjfçlaskdjfçlaskdfjçlaskdjfçlaskdjfçlaskdjfçasçldkfjsaçdlkfjsaçldkfjsaçlkdfjsadfjlçaskjdf</TextTitle>
-                    <Text id={`text-container`}>
+                    <TextTitle id={`text-container-${idNum}`}>Esse é o título sçldkjaçsldkfjlçaskdjflçaskdjfçlaskdjfçlaskdjfçlaskdfjçlaskdjfçlaskdjfçlaskdjfçasçldkfjsaçdlkfjsaçldkfjsaçlkdfjsadfjlçaskjdf</TextTitle>
+                    <Text id={`title-container-${idNum}`}>
                         sçldkjaçsldkfjlçaskdjflçaskdjfçlaskdjfçlaskdjfçlaskdfjçlaskdjfçlaskdjfçlaskdjfçasçldkfjsaçdlkfjsaçldkfjsaçlkdfjsadfjlçaskjdf laskdjfçalskdjfçlaskdjfçlaskdjfçlaksjdfçlaskjdfçlaskdjfçalskdjfçaslkdjfçlkasdfçlsakjdfçlsakdjfçlsakdjfçlsakdfjçlaskdjsaldçkfj
-                        {/* sçldkjaçsldkfjlçaskdjflçask */}
-                        {/* sdssd asdfasdfasdf sadfas df asdf a sdfasdf asdf asdf asdf  a sdf asdf as df
-                        asdfsadf asdfasdf asdfasdf dsfasdff wer wet wertwertwe rt we rt wertwertwe
-                        wertwertwert wertwert ewrt.
-                        sdssd asdfasdfasdf sadfas df asdf a sdfasdf asdf asdf asdf  a sdf asdf as df
-                        asdfsadf asdfasdf asdfasdf dsfasdff wer wet wertwertwe rt we rt wertwertwe
-                        wertwertwert wertwert ewrt.
-                        sdssd asdfasdfasdf sadfas df asdf a sdfasdf asdf asdf asdf  a sdf asdf as df
-                        asdfsadf asdfasdf asdfasdf dsfasdff wer wet wertwertwe rt we rt wertwertwe
-                        wertwertwert wertwert ewrt.
-                        sdssd asdfasdfasdf sadfas df asdf a sdfasdf asdf asdf asdf  a sdf asdf as df
-                        asdfsadf asdfasdf asdfasdf dsfasdff wer wet wertwertwe rt we rt wertwertwe
-                        wertwertwert wertwert ewrt.
-                        sdssd asdfasdfasdf sadfas df asdf a sdfasdf asdf asdf asdf  a sdf asdf as df
-                        asdfsadf asdfasdf asdfasdf dsfasdff wer wet wertwertwe rt we rt wertwertwe
-                        wertwertwert wertwert ewrt. */}
                     </Text>
                 </CardText>
                 <CardFooter>59 comentários</CardFooter>

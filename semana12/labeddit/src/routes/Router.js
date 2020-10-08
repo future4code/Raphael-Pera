@@ -5,6 +5,7 @@ import { FeedPage } from '../pages/FeedPage/FeedPage'
 import { LoginPage } from '../pages/LoginPage/LoginPage'
 import { PostPage } from '../pages/PostPage/PostPage'
 import { SignUpPage } from '../pages/SignUpPage/SignUpPage'
+import { PostAddPage } from '../pages/PostAddPage/PostAddPage'
 
 
 export const Router = (props) => {
@@ -21,6 +22,9 @@ export const Router = (props) => {
             </Route>
             <Route exact path={'/feed/:id'}>
                 <FeedPage/>
+            </Route>
+            <Route exact path={'/postadd'}>
+                <PostAddPage/>
             </Route>
             <Route>
                 <ErrorPage/>

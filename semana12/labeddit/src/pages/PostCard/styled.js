@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import ThumbUpRoundIcon from '@material-ui/icons/ThumbUpRounded'
+import ThumbDownAltRoundedIcon from '@material-ui/icons/ThumbDownAltRounded'
 
 export const CardContainer = styled.div`
     background-color: whitesmoke;
@@ -20,33 +22,55 @@ export const CardContainer = styled.div`
         flex-direction: column;
         justify-content: flex-start;
         align-items: stretch;
-        padding: 10px 0;
+        padding: 15px 0;
         border-radius: 5px 0 0 5px;
         z-index: 3;
     `
 
-    export const SideBarUp = styled.span`
-        margin: 3px 0;
-        padding: 3px 0;
-        cursor: pointer;
-        :hover{background-color: rgb(225,225,225);}
+    export const IconContainer = styled.div`
         display: grid;
         place-items: center;
+    `
+
+    // export const SideBarUp = styled.span`
+    //     margin: 3px 0;
+    //     padding: 3px 0;
+    //     cursor: pointer;
+    //     :hover{background-color: rgb(225,225,225);}
+    //     display: grid;
+    //     place-items: center;
+    // `
+
+    export const SideBarUp = styled(ThumbUpRoundIcon)`
+        cursor: pointer;
+        color: rgb(150,150,150);
+        :hover{color: rgb(120,120,120);}
+        :active{color: black;}
     `
 
     export const SideBarCount = styled.span`
         display: grid;
         place-items: center;
+        padding: 10px 0;
+        margin: 0;
     `
 
-    export const SideBarDown = styled.span`
-        margin: 3px 0;
-        padding: 3px 0;
+    // export const SideBarDown = styled.span`
+    //     margin: 3px 0;
+    //     padding: 3px 0;
+    //     cursor: pointer;
+    //     :hover{background-color: rgb(225,225,225);}
+    //     display: grid;
+    //     place-items: center;
+    // `
+
+    export const SideBarDown = styled(ThumbDownAltRoundedIcon)`
         cursor: pointer;
-        :hover{background-color: rgb(225,225,225);}
-        display: grid;
-        place-items: center;
+        color: rgb(150,150,150);
+        :hover{color: rgb(120,120,120);}
+        :active{color: black;}
     `
+    
 //--------------
 
 export const CardContent = styled.div`
@@ -59,7 +83,7 @@ export const CardContent = styled.div`
 //CardHeader and sons styles
     export const CardHeader = styled.div`
         background-color: whitesmoke;
-        box-shadow: 0 3px 5px rgb(235,235,235);
+        box-shadow: -3px 3px 5px rgb(235,235,235);
         padding: 10px;
         border-radius: 0 5px 0 0;
         z-index:2;
@@ -87,6 +111,7 @@ export const CardContent = styled.div`
         padding: 10px;
         max-height: 200px;
         overflow: auto;
+        /* overflow-x: hidden; */
         width: 100%;
     `
 
@@ -106,7 +131,7 @@ export const CardContent = styled.div`
 //CardFooter and sons styles
     export const CardFooter = styled.div`
         padding: 10px;
-        box-shadow: 0 -10px 6px rgb(245,245,245);
+        box-shadow: -3px -8px 5px rgb(245,245,245);
         font-size: 14px;
         /* font-weight: bold; */
         color: rgb(100,100,100);
