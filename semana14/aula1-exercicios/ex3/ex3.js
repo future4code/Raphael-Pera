@@ -1,9 +1,16 @@
-let taskList = ['Tarefa 1', 'Tarefa 2']
-const task = process.argv[2]
+const newTask = process.argv[2]
+const fs = require('fs')
 
-const addTaskToList = (task) => {
-    taskList.push(task)
+if (newTask) {
+    fs.appendFile('./tarefas.txt', `\r\n${newTask}`, function(err){
+        if (err) throw err
+        console.log('Tarefa adicionada com sucesso!')
+    })
 }
 
-addTaskToList(task)
-console.log(taskList)
+fs.readFile('./tarefas.txt', function(err, data){
+    if (err) throw err
+    console.log(`\nTAREFAS:\n\n${data.toString()}`)
+})
+
+
