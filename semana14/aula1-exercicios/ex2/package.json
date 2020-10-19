@@ -1,0 +1,13 @@
+{
+  "name": "ex2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ex2.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node ./ex2.js"
+  },
+  "keywords": [],
+  "author": "Raphael",
+  "license": "ISC"
+}

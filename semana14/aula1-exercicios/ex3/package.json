@@ -1,0 +1,13 @@
+{
+  "name": "ex3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ex3.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node ./ex3.js"
+  },
+  "keywords": [],
+  "author": "Raphael Ribeiro",
+  "license": "ISC"
+}
