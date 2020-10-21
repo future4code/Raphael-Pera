@@ -30,8 +30,7 @@ const produtos: product[] = [
     },
 ]
 
-
-const blackFridayPricing = (products: product[]): [] | {} => {
+const blackFridayPricing = (products: product[]): /*[] | {}*/ any => {
     const newProducts = products.map(prod=>{
         let discountPrice: number | string
         switch (prod.classification) {
@@ -45,7 +44,6 @@ const blackFridayPricing = (products: product[]): [] | {} => {
         return {...prod, discountPrice: Number(discountPrice.toFixed(2))}
     })
 
-    // console.table(newProducts)
     return newProducts
 }
 
