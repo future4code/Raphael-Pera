@@ -13,7 +13,15 @@ export type bankAccount = {
 }
 
 
-export const bankData: bankAccount[] = []
+export const bankData: bankAccount[] = [
+    {
+        name: "Raphael",
+        CPF: "45612378900",
+        birthday: "1983-08-07",
+        balance: 0,
+        extract: []
+    }
+]
 
 
 
