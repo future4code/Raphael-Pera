@@ -141,4 +141,193 @@ WHERE gender = "invalid"
 
 Esse comando retorna uma tabela vazia, já que não existe nenhum ator com o "gender" cadastrado como "invalid"
 
-d)
+d) A query é:
+````
+SELECT id, name, salary
+FROM Actor
+WHERE salary <= 500000
+;
+````
+
+e) Erro gerado:
+````
+Error Code: 1054. Unknown column 'nome' in 'field list'
+
+````
+
+Esse erro ocorreu porque não existe nenhum campo chamado "nome" na tabela consultada (Actor).
+
+Correção:
+````
+SELECT id, name from Actor WHERE id = "002"
+````
+
+
+-----------------------------------
+### Exercício 4
+````
+SELECT *
+from Actor
+WHERE (name LIKE "A%" OR name LIKE "J%") AND salary > 300000
+;
+````
+a) A query acima retorna todas as informações dos atores cujos nomes comecem com as letras "A" ou "J" e cujos salários sejam maiores que 300.000.
+
+b) A query é:
+````
+SELECT *
+from Actor
+WHERE name NOT LIKE "A%" AND salary > 350000
+;
+````
+
+c) A query é:
+````
+SELECT *
+from Actor
+WHERE name LIKE "%G%" OR name LIKE "%g%"
+;
+````
+
+d) A query é:
+````
+SELECT *
+from Actor
+WHERE (name LIKE "%A%" OR name LIKE "%a%" OR name LIKE "%G%" OR name LIKE "%g%") AND salary BETWEEN 350000 AND 900000
+;
+````
+
+
+-----------------------------------
+### Exercício 5
+a) A query é:
+````
+CREATE TABLE Filmes (
+	id VARCHAR(255) PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    sinopse VARCHAR(255) NOT NULL,
+    data_lancamento DATE NOT NULL,
+    avaliacao INT NOT NULL
+)
+````
+
+b) A query é:
+````
+INSERT INTO Filmes (id, nome, sinopse, data_lancamento, avaliacao)
+
+VALUES(
+	"001",
+    "Se eu fosse você",
+    "Cláudio e Helena são casados há muitos anos e enfrentam a rotina do casamento. Um dia eles são atingidos por um fenômeno inexplicável e trocam de corpos",
+    "2006-01-06",
+    7
+);
+````
+
+c) A query é:
+````
+INSERT INTO Filmes (id, nome, sinopse, data_lancamento, avaliacao)
+
+VALUES(
+	"002",
+    "Doce de mãe",
+    "Dona Picucha, uma animada senhora de 85 anos, sempre causa grandes confusões. A vida dela e dos seus quatro filhos sofre uma reviravolta depois que Zaida, empregada e amiga de Dona Picucha, anuncia que vai se casar e não poderá mais morar com ela",
+    "2012-12-27",
+    10
+);
+````
+
+d) A query é:
+````
+INSERT INTO Filmes (id, nome, sinopse, data_lancamento, avaliacao)
+
+VALUES(
+	"003",
+    "Dona Flor e Seus Dois Maridos",
+    "Dona Flor é uma sedutora professora de culinária casada com Vadinho, que só quer saber de farras e jogatina nas boates. A vida de abusos acaba por acarretar sua morte precoce.",
+    "2017-11-02",
+    8
+);
+````
+
+e) A query é:
+````
+INSERT INTO Filmes (id, nome, sinopse, data_lancamento, avaliacao)
+
+VALUES(
+	"004",
+    "Deus é brasileiro",
+    "Cansado dos erros cometidos pela humanidade, Deus (Antônio Fagundes) resolve tirar umas férias nas estrelas. Mas, para isso, ele precisa encontrar um santo que se ocupe de seus deveres enquanto ele estiver ausente.",
+    "2003-01-31",
+    10
+);
+````
+
+
+
+
+
+-----------------------------------
+### Exercício 6
+a) A query é:
+````
+SELECT id, nome, avaliacao
+from Filmes
+WHERE id = "002"
+;
+````
+
+b) A query é:
+````
+SELECT *
+from Filmes
+WHERE nome = "Deus é brasileiro"
+;
+````
+
+c) A query é:
+````
+SELECT id, nome, sinopse
+from Filmes
+WHERE avaliacao >= 7
+;
+````
+
+-----------------------------------
+### Exercício 7
+a) A query é:
+````
+Select *
+from Filmes
+WHERE nome LIKE "%vida%"
+;
+````
+
+b) A query é:
+````
+SELECT *
+from Filmes
+WHERE nome LIKE "%brasil%" or sinopse LIKE "%brasil%"
+;
+````
+
+c) A query é:
+````
+SELECT *
+from Filmes
+WHERE data_lancamento < "2020-10-26"
+;
+````
+
+d) A query é:
+````
+SELECT *
+from Filmes
+WHERE
+	data_lancamento < "2020-10-26"
+    AND
+    (nome LIKE "%brasil%" or sinopse LIKE "%brasil%")
+    AND
+    avaliacao > 7
+;
+````
