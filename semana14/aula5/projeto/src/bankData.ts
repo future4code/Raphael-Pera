@@ -20,6 +20,14 @@ export const bankData: bankAccount[] = [
         birthday: "1983-08-07",
         balance: 0,
         extract: []
+    },
+
+    {
+        name: "Felipe",
+        CPF: "12345678900",
+        birthday: "1991-12-23",
+        balance: 0,
+        extract: []
     }
 ]
 

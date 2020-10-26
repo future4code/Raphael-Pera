@@ -87,16 +87,24 @@ app.get('/f4bank/accAll', (req: Request, res: Response) => {
             const {name, CPF, value} = req.body
 
             if (!name || !CPF || !value) {
-                throw new Error("ERROR! Informe o nome e o CPF da conta a ser alterada, e o novo valor do saldo")
+                throw new Error("ERRO! Informe o nome e o CPF da conta a ser alterada, e o novo valor do saldo")
             }
 
             const accIndex: number = bankData.findIndex(acc => acc.CPF === CPF)
             if (accIndex < 0) {
                 errorCode = 404
-                throw new Error("ERROR! Usuário não encontrado")
+                throw new Error("ERRO! Usuário não encontrado")
             }
 
-            bankData[accIndex].balance = value
+            if (bankData[accIndex].name !== name) {
+                errorCode = 401
+                throw new Error("ERRO! Nome informado incorreto.")
+            }
+
+            bankData[accIndex].balance += value
+            const description = `Depósito em dinheiro`
+            const date = `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDate()}`
+            bankData[accIndex].extract.push({value, description, date,})
 
             res.status(200).send({message: `Saldo alterado com sucesso!`}).end()
         } catch (error) {
@@ -147,8 +155,8 @@ app.get('/f4bank/accAll', (req: Request, res: Response) => {
                 throw new Error("Saldo insuficiente!")
             }
 
-            bankData[accIndex].extract.push({value, description, date,})
-            bankData[accIndex].balance -= value
+            bankData[accIndex].extract.push({value, description: `[pagamento] ${description}`, date,})
+            // bankData[accIndex].balance -= value
 
             res.status(200).send("Pagamento cadastrado com sucesso").end()
         } catch (error) {
@@ -168,17 +176,73 @@ app.get('/f4bank/accAll', (req: Request, res: Response) => {
 
 
 
+//  ATUALIZAR SALDO DO CLIENTE
+    app.put('/f4bank/balanceUpdate/:CPF', (req: Request, res: Response) => {
+        let errorCode = 400
+        try {
+            const accIndex = bankData.findIndex(acc => acc.CPF === req.params.CPF)
+
+            if (accIndex < 0) {
+                errorCode = 404
+                throw new Error("Usuário não encontrado")
+            }
+
+            bankData[accIndex].extract.forEach(item => {
+                if (item.description.includes("[pagamento]")) {
+                    if (new Date(item.date).getTime() < new Date().getTime()) {
+                        bankData[accIndex].balance -= item.value
+                    }
+                }
+            })
+
+            res.status(200).send({message: "Saldo atualizado com sucesso!"}).end
+        } catch (error) {
+            res.status(errorCode).send({message: error.mesage}).end()
+        }
+    })
+
+
 //  TRANSFERENCIA INTERNA
     app.post('/f4bank/transfer', (req: Request, res: Response) => {
         let errorCode = 400
         try {
-            const {name, CPF, nameDestiny, CPFDestiny} = req.body
+            const {name, CPF, nameDestiny, CPFDestiny, value} = req.body
 
-            //----------------------
+            if (!name || !CPF || !nameDestiny || !CPFDestiny || !value) {
+                errorCode = 401
+                throw new Error(
+                    "Devem ser informados o nome e o CPF do remetente e do destinatário, assim como o valor transferido"
+                )
+            }
 
-            //  Código da API aqui.
+            const accIndex = bankData.findIndex(acc => acc.CPF === CPF)
 
-            //----------------------
+            if (accIndex < 0) {
+                errorCode = 404
+                throw new Error("Usuário remetente não encontrado")
+            }
+
+            if (value > bankData[accIndex].balance) {
+                errorCode = 401
+                throw new Error("Transação não efetuada. Saldo indisponível")
+            }
+
+            const accDestIndex = bankData.findIndex(acc => acc.CPF === CPFDestiny)
+
+            if (accDestIndex < 0) {
+                errorCode = 404
+                throw new Error("Destinatário não encontrado")
+            }
+
+            bankData[accIndex].balance -= value
+            let description = `Tranferência para ${nameDestiny} (CPF: ${CPFDestiny})`
+            const date = `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDate()}`
+            bankData[accIndex].extract.push({value, description, date,})
+            
+            description = `Tranferência de ${name} (CPF: ${CPF})`
+            bankData[accDestIndex].extract.push({value, description, date,})
+            bankData[accDestIndex].balance += value
+
 
             res.status(200).send({message: "Tranferência realizada com sucesso"})
         } catch (error) {
@@ -186,26 +250,6 @@ app.get('/f4bank/accAll', (req: Request, res: Response) => {
         }
     })
 
-
-
-
-
-
-
-// //  TESTES
-//     app.get('/f4bank/teste', (req: Request, res: Response) => {
-//         let errorCode = 400
-//         try {
-//             const stringTeste: string = 'bananinhas'
-//             const arrayTeste = stringTeste.split('/')
-//             console.log(arrayTeste)
-//             const dateString = `${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDate()}`
-//             console.log(new Date(dateString))
-//             res.status(200).send('Teste realizado com sucesso').end()
-//         } catch (error) {
-//             res.status(errorCode).send({message: error.message}).end()
-//         }
-//     })
 
 
 // app.listen(3003, () => {console.log(`Server running...`)})
