@@ -157,5 +157,125 @@ GROUP BY gender
 ---
 
 ## Exercício 6
-a)
+a) A query é:
+```
+ALTER TABLE Movie
+ADD playing_limit_date DATE
+;
+```
 
+b) A query é:
+```
+ALTER TABLE Movie CHANGE rating rating FLOAT;
+```
+
+c) A query é:
+```
+UPDATE Movie
+SET playing_limit_date = "2020-12-31"
+WHERE id = "004"
+;
+
+UPDATE Movie
+SET playing_limit_date = "2020-09-15"
+WHERE id = "002"
+;
+```
+
+d) As querys são:
+```
+DELETE
+FROM Movie
+WHERE id="002"
+;
+
+UPDATE Movie
+SET sinopsis = "Essa nova sinopse não é tão elaborada quanto a primeira"
+WHERE id = "002"
+;
+```
+Resposta gerada:
+```
+0 row(s) affected Rows matched: 0  Changed: 0  Warnings: 0
+
+```
+Não ocorre um erro própriamente dito, mas nenhum dado da tabela é alterado, já que não existe nenhum id = "002".
+
+---
+
+## Exercício 7
+a) A query é:
+```
+SELECT COUNT(*)
+FROM Movie
+WHERE rating > 7.5
+;
+```
+
+b) A query é:
+```
+SELECT AVG(rating)
+FROM Movie
+;
+```
+
+c) A query é:
+```
+SELECT COUNT(*)
+FROM Movie
+WHERE playing_limit_date >= CURDATE()
+;
+```
+
+d) A query é:
+```
+SELECT COUNT(*)
+FROM Movie
+WHERE release_date > CURDATE()
+;
+```
+
+e) A query é:
+```
+SELECT MAX(rating) FROM Movie;
+```
+
+f) A query é:
+```
+SELECT MIN(rating) FROM Movie;
+```
+
+---
+
+## Exercício 8
+a) A query é:
+```
+SELECT * FROM Movie
+ORDER BY name ASC
+;
+```
+
+b) A query é:
+```
+SELECT * FROM Movie
+ORDER BY name DESC
+LIMIT 5
+;
+```
+
+c) A query é:
+```
+SELECT * FROM Movie
+WHERE playing_limit_date >= CURDATE()
+ORDER BY release_date DESC
+LIMIT 3
+;
+```
+
+d) A query é:
+```
+SELECT * FROM Movie
+ORDER BY rating DESC
+LIMIT 3
+;
+```
