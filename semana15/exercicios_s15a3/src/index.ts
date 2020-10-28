@@ -6,6 +6,10 @@ import {AddressInfo} from 'net'
 import { selectActorByName } from './data/selectActorByName'
 import { getActorByName } from './endpoints/getActorByName'
 import { getAllActors } from './endpoints/getAllActors'
+import { selectAllActors } from './data/selectAllActors'
+import { countActorGender } from './data/countActorGender'
+import { updateActorSalary } from './data/updateActorSalary'
+import { deleteActorById } from './data/deleteActorById'
 dotenv.config()
 
 
@@ -31,9 +35,26 @@ const app: Express = express()
 app.use(express.json())
 app.use(cors())
 
+//  Busca todos os atores (não responde nenhum exercício)
+    app.get('/actor/all', getAllActors)
 
-app.get('/actor/byname', getActorByName)
-app.get('/actor/all', getAllActors)
+//  1a) O retorno gerado pelo uso do"raw" contitui-se de uma array contendo outras duas arrays,
+//      sendo que a primeira array contem os dados que desejamos e a segunda contém outras
+//      informação não pertinentes à consulta 
+
+//  1b) Busca ator pelo nome
+    app.get('/actor/:name', getActorByName)
+
+//  1c) Busca a quantidade de atores de determinado genero
+    countActorGender("female")
+
+
+//  2a) Atualiza o salário do ator pelo "id"
+    updateActorSalary("003", 650000)
+
+// 2b)  Recebe um id e deleta um ator
+    deleteActorById("014")
+
 
 
 const server = app.listen(process.env.PORT || 3003, () => {

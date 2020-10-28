@@ -4,11 +4,11 @@ import {Actor} from '../index'
 
 
 export const getActorByName = async (req: Request, res: Response) => {
-    console.log('getActorByName')
     let errorCode = 400
     try {
-        const result: Actor | undefined = await selectActorByName("Glória Pires")
-        if (result === undefined) {
+        const name = req.params.name
+        const result: Actor | undefined = await selectActorByName(name)
+        if (!result) {
             errorCode = 404
             throw new Error("Actor not found!")
         }
