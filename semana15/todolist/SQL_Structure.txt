@@ -1,0 +1,18 @@
+//  Tabela de usuários
+//  (Users)
+//      - name
+//      - nickname
+//      - email
+
+//  Tabela de tarefas
+//  (Tasks)
+//      - title
+//      - description
+//      - limit_date
+//      - status
+//      - created_user
+
+//  Tabela relacional tarefas x usuarios responsáveis
+//  (TaskUsers) - N:M
+//      - task_id
+//      - user_id
