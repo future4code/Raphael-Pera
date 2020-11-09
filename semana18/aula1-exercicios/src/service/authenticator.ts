@@ -14,10 +14,11 @@ export const generateTOKEN = (input: AuthenticationData) => {
 
 
 
-export function getTokenData (token: string): AuthenticationData {
-    return jwt.verify(
+export function getTokenData (token: string) {
+    const userData = jwt.verify(
         token,
         process.env.JWT_KEY as string
     ) as AuthenticationData
+    return userData.id
 }
 

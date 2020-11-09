@@ -11,7 +11,6 @@ export const postLoginUser = async (req: Request, res: Response): Promise<void> 
 
         const data = {email}
         const user = await selectUserByEmail(data)
-
         if (user.password !== password) {throw new Error(`Senha inválida!`)}
 
         const token = generateTOKEN({id: user.id})

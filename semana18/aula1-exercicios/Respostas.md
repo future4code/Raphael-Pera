@@ -159,4 +159,55 @@ export const postLoginUser = async (req: Request, res: Response): Promise<void> 
 }
 ```
 
+-------
 
+## Exercicio 7
+**a)**
+Define que o valor que será atribuido à constante "payload" pode ser de qualquer formato.
+
+**b)**
+```
+export function getTokenData (token: string): AuthenticationData {
+    return jwt.verify(
+        token,
+        process.env.JWT_KEY as string
+    ) as AuthenticationData
+}
+```
+
+-------
+
+## Exercicio 8
+**a)**
+```
+import { connection } from "../index"
+
+export async function selectUserByID (data: any) {
+    const {id} = data
+    const sqlRaw = `SELECT * FROM USERS WHERE id = "${id}";`
+    const user = await connection.raw(sqlRaw)
+    return user[0][0]
+}
+```
+
+**b)**
+```
+import { Request, Response } from "express";
+import { selectUserByID } from "../data/selectUserByID";
+import { getTokenData } from "../service/authenticator";
+
+export const getUserByToken = async(req: Request, res: Response) => {
+    try {
+        const token = req.headers.authorization as string
+        const id = getTokenData(token)
+
+        const user = await selectUserByID({id})
+
+        const data = {id: user.id, email: user.email}
+
+        res.status(200).send(data)
+    } catch (error) {
+        res.status(res.statusCode).send({message: `[ERROR]: ${error.sqlMessage || error.message}`})
+    }
+}
+```

@@ -5,6 +5,7 @@ import dotenv from 'dotenv'
 import knex from 'knex'
 import { postNewUser } from './endpoints/postNewUser'
 import { postLoginUser } from './endpoints/postLoginUser'
+import { getUserByToken } from './endpoints/getUserByToken'
 
 dotenv.config()
 
@@ -27,6 +28,7 @@ app.use(cors())
 
 app.post('/signup', postNewUser)
 app.post('/login', postLoginUser)
+app.get('/user/profile', getUserByToken)
 
 
 
