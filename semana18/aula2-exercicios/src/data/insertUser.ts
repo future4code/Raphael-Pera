@@ -3,14 +3,15 @@ import { generateID } from "../service/IDgenerator"
 
 
 export async function insertUser (data: any) {
-    const {id, email, password} = data
+    const {id, email, password, role} = data
 
     const sqlRaw = `
-        INSERT INTO USERS (id, email, password)
+        INSERT INTO USERS (id, email, password, role)
         VALUES (
             "${id}",
             "${email}",
-            "${password}"
+            "${password}",
+            "${role}"
         )
         ;
     `

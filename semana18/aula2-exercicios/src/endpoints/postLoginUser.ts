@@ -1,3 +1,4 @@
+import { compare } from "bcryptjs";
 import { Request, Response } from "express";
 import { selectUserByEmail } from "../data/selectUserByEmail";
 import { generateTOKEN } from "../service/authenticator";
@@ -11,9 +12,11 @@ export const postLoginUser = async (req: Request, res: Response): Promise<void> 
 
         const data = {email}
         const user = await selectUserByEmail(data)
-        if (user.password !== password) {throw new Error(`Senha inválida!`)}
 
-        const token = generateTOKEN({id: user.id})
+        const comparePassword = await compare(password, user.password)
+        if (!comparePassword) {throw new Error(`Email ou senha incorretos!`)}
+
+        const token = generateTOKEN({id: user.id, role: user.role})
 
         res.status(200).send(token)
     } catch (error) {
