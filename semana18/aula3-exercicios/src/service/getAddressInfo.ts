@@ -14,9 +14,7 @@ export async function getAddressInfo(cep: string): Promise<address> {
     const {logradouro, bairro, localidade, uf} = cepData.data
     
     const result = {logradouro, bairro, cidade: localidade, estado: uf}
-    console.log(result)
+    // console.log(result)
 
     return result
 }
-
-getAddressInfo('02516000')
