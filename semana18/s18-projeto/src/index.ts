@@ -6,6 +6,7 @@ import knex from 'knex'
 import { postUser } from './endpoint/postUser'
 import { postLogin } from './endpoint/postLogin'
 import { getUserProfile } from './endpoint/getUserProfile'
+import { getOtherUserDataByID } from './endpoint/getOtherUserDataByID'
 dotenv.config()
 
 
@@ -29,7 +30,7 @@ app.use(cors())
 app.post('/signup', postUser)               //endpoint para cadastro de usuário
 app.post('/login', postLogin)               //endpoint para login 
 app.get('/user/profile', getUserProfile)    //endpoint para pegar próprio perfil
-app.get('/user/:id',)       //endpoint para pegar perfil de outro usuário
+app.get('/user/:id', getOtherUserDataByID)  //endpoint para pegar perfil de outro usuário
 app.post('/recipe',)        //endpoint para criar receita
 app.get('/recipe/:id',)     //endpoint para pegar receita
 
