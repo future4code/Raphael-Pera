@@ -8,6 +8,7 @@ import { postLogin } from './endpoint/postLogin'
 import { getUserProfile } from './endpoint/getUserProfile'
 import { getOtherUserDataByID } from './endpoint/getOtherUserDataByID'
 import { postRecipe } from './endpoint/postRecipe'
+import { getRecipeByID } from './endpoint/getRecipeByID'
 dotenv.config()
 
 
@@ -33,7 +34,7 @@ app.post('/login', postLogin)               //endpoint para login
 app.get('/user/profile', getUserProfile)    //endpoint para pegar próprio perfil
 app.get('/user/:id', getOtherUserDataByID)  //endpoint para pegar perfil de outro usuário
 app.post('/recipe', postRecipe)             //endpoint para criar receita
-app.get('/recipe/:id',)     //endpoint para pegar receita
+app.get('/recipe/:id', getRecipeByID)       //endpoint para pegar receita
 
 
 

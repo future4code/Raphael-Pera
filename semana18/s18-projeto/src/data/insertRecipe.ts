@@ -3,15 +3,16 @@ import { inputRecipe } from "../service/types";
 
 
 export async function insertRecipe (data: inputRecipe) {
-    const {id, title, description, createdAt} = data
+    const {id, title, description, createdAt, userID} = data
 
     const sqlRaw = `
-        INSERT INTO COKNU_RECIPE (id, title, description, created_at)
+        INSERT INTO COKNU_RECIPE (id, title, description, created_at, user_id)
         VALUES (
             "${id}",
             "${title}",
             "${description}",
-            "${createdAt}"
+            "${createdAt}",
+            "${userID}"
         )
         ;
     `

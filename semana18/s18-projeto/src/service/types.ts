@@ -18,5 +18,6 @@ export type inputRecipe = {
     id: string,
     title: string,
     description: string
-    createdAt: string
+    createdAt: string,
+    userID: string
 }
