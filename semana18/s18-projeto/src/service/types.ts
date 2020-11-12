@@ -13,3 +13,10 @@ export type dataBaseUser = {
     password: string,
     role: USER_ROLE
 }
+
+export type inputRecipe = {
+    id: string,
+    title: string,
+    description: string
+    createdAt: string
+}

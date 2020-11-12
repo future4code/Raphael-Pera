@@ -17,9 +17,6 @@ export const postUser = async(req: Request, res: Response): Promise<void> => {
         const id = generateID()
         const passwordHash = await generateHash(password)
 
-        // const newDate = new Date()
-        // const created_at = `${newDate.getFullYear()}-${newDate.getMonth()+1}-${newDate.getDate()}`
-
         const userData = {id, name, email, password: passwordHash, role}
         await insertUser(userData)
 
