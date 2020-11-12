@@ -10,3 +10,12 @@ export const generateToken = (input: AuthenticationData): string => {
     )
     return token
 }
+
+
+export function getTokenData (token: string) {
+    const userData = jwt.verify(
+        token,
+        process.env.JWT_KEY as string
+    ) as AuthenticationData
+    return userData
+}
