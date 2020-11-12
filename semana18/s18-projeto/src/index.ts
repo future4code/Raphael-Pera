@@ -4,6 +4,7 @@ import {AddressInfo} from 'net'
 import dotenv from 'dotenv'
 import knex from 'knex'
 import { postUser } from './endpoint/postUser'
+import { postLogin } from './endpoint/postLogin'
 dotenv.config()
 
 
@@ -25,7 +26,7 @@ app.use(cors())
 
 
 app.post('/signup', postUser)        //endpoint para cadastro de usuário
-app.post('/login',)         //endpoint para login 
+app.post('/login', postLogin)        //endpoint para login 
 app.get('/user/profile',)   //endpoint para pegar próprio perfil
 app.get('/user/:id',)       //endpoint para pegar perfil de outro usuário
 app.post('/recipe',)        //endpoint para criar receita

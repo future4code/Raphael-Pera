@@ -5,3 +5,11 @@ export enum USER_ROLE {
 }
 
 export type AuthenticationData = {id: string, role: USER_ROLE}
+
+export type dataBaseUser = {
+    id: string,
+    email: string,
+    name: string,
+    password: string,
+    role: USER_ROLE
+}
