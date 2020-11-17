@@ -1,8 +1,10 @@
-import express, {Express} from 'express'
+import express, {Express, Request, Response} from 'express'
 import cors from 'cors'
 import {AddressInfo} from 'net'
 import dotenv from 'dotenv'
 import knex from 'knex'
+import { userController } from './controller/userController'
+
 
 dotenv.config()
 export const connection = knex({
@@ -10,6 +12,7 @@ export const connection = knex({
     connection: {
         host: process.env.DB_HOST,
         port: 3306,
+        user: process.env.DB_USER,
         password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME
     }
@@ -21,7 +24,7 @@ app.use(express.json())
 app.use(cors())
 
 
-app.put('/signup', )
+app.put('/signup', userController.createUser)
 
 
 const server = app.listen(process.env.PORT || 3003, () => {
