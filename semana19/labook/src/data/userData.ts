@@ -1,29 +1,24 @@
 import { connection } from "../index"
+import { User } from "../model/User"
 
 
-export const userData = {
-    createUser: async (data: any) => {
+class UserData {
+    createUser = async(user: User) => {
         try {
-            // console.log(`[userData]: [createUser]`)
-            const {id, name, email, password} = data
-
             await connection ('labook_users')
                 .insert({
-                    id,
-                    name,
-                    email,
-                    password
+                    id: user.getID(),
+                    name: user.getName(),
+                    email: user.getEmail(),
+                    password: user.getPassword()
                 })
         } catch (error) {
-            // console.log(`[userData]: [createUser]: [ERROR] ${error.sqlMessage}`)
             throw new Error(error.sqlMessage)
         }
-    },
+    }
 
-    selectUserByEmail: async(data: any) => {
+    selectUserByEmail = async(email: string) => {
         try {
-            const {email} = data
-
             const queryResult: any = await connection("labook_users")
             .select("*")
             .where({ email })
@@ -34,3 +29,5 @@ export const userData = {
         }
     }
 }
+
+export const userData: UserData = new UserData()
