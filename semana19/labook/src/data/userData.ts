@@ -1,11 +1,11 @@
-import { connection } from "../index"
 import { User } from "../model/User"
+import { BaseDataBase } from "./BaseDataBase"
 
 
-class UserData {
+class UserData extends BaseDataBase {
     createUser = async(user: User) => {
         try {
-            await connection ('labook_users')
+            await this.connection ('labook_users')
                 .insert({
                     id: user.getID(),
                     name: user.getName(),
@@ -13,13 +13,13 @@ class UserData {
                     password: user.getPassword()
                 })
         } catch (error) {
-            throw new Error(error.sqlMessage)
+            throw new Error(error.sqlMessage || error.message)
         }
     }
 
     selectUserByEmail = async(email: string) => {
         try {
-            const queryResult: any = await connection("labook_users")
+            const queryResult: any = await this.connection("labook_users")
             .select("*")
             .where({ email })
             

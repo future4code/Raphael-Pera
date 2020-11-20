@@ -1,30 +1,24 @@
 import { Request, Response } from "express"
-import { connection } from "../index"
+import { postBusiness } from "../business/postBusiness"
+import { postData } from "../data/postData"
+import { Post } from "../model/post"
 import { services } from "../services/services"
-import { AuthenticationData, Post } from "../types"
+import { AuthenticationData } from "../types"
 
 
-export const postController = {
-   createPost: async (req: Request, res: Response) => {
+class PostController {
+   createPost = async(req: Request, res: Response) => {
       try {
-         let message = "Success!"
+         let message = "Post created successfully!"
 
          const { photo, description, type } = req.body
-
          const token: string = req.headers.authorization as string
 
-         const tokenData: AuthenticationData = services.getTokenData(token)
+         const data = {
+            photo, description, type, token
+         }
 
-         const id: string = services.generateId()
-
-         await connection("labook_posts")
-            .insert({
-               id,
-               photo,
-               description,
-               type,
-               author_id: tokenData.id
-            })
+         await postBusiness.createPost(data)
 
          res.status(201).send({ message })
 
@@ -34,32 +28,27 @@ export const postController = {
 
          res.send({ message })
       }
-   },
+   }
 
-   getPost: async (req: Request, res: Response) => {
+   getPostById = async(req: Request, res: Response) => {
       try {
          let message = "Success!"
    
-         const { id } = req.params
+         const id: string = req.params.id
+         const token: string | undefined = req.headers.authorization
+         // const post: Post = await postData.getPostById(id)
+
+         // const queryResult: any = await connection("labook_posts")
+         //    .select("*")
+         //    .where({ id })
    
-         const queryResult: any = await connection("labook_posts")
-            .select("*")
-            .where({ id })
+         // if (!queryResult[0]) {
+         //    res.statusCode = 404
+         //    message = "Post not found"
+         //    throw new Error(message)
+         // }
    
-         if (!queryResult[0]) {
-            res.statusCode = 404
-            message = "Post not found"
-            throw new Error(message)
-         }
-   
-         const post: Post = {
-            id: queryResult[0].id,
-            photo: queryResult[0].photo,
-            description: queryResult[0].description,
-            type: queryResult[0].type,
-            createdAt: queryResult[0].created_at,
-            authorId: queryResult[0].author_id,
-         }
+         const post: Post = await postBusiness.getPostById({token, id}) 
    
          res.status(200).send({ message, post })
    
@@ -71,3 +60,5 @@ export const postController = {
       }
    }
 }
+
+export const postController: PostController = new PostController()
