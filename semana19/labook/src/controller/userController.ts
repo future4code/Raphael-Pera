@@ -35,6 +35,35 @@ class UserController {
          res.send({ message })
       }
    }
+
+   public addFriend = async(req: Request, res: Response) => {
+      try {
+         const friendId: string = req.params.id
+         const token: string | undefined = req.headers.authorization
+
+         const data = {token, friendId}
+
+         await userBusiness.addFriend(data)
+         res.status(200).send({message: `Friend added successfully`})
+      } catch (error) {
+         res.statusCode = 400
+         res.send({message: `[ERROR]: ${error.sqlMessage || error.message}`})
+      }
+   }
+
+   public deleteFriend = async(req: Request, res: Response) => {
+      try {
+         const friendId: string = req.params.id
+         const token: string | undefined = req.headers.authorization
+
+         const data = {token, friendId}
+
+         await userBusiness.deleteFriend(data)
+         res.status(200).send({message: `Friend deleted successfully`})
+      } catch (error) {
+         res.send({message: `[ERROR]: ${error.sqlMessage || error.message}`})
+      }
+   }
 }
 
 export const userController: UserController = new UserController()
