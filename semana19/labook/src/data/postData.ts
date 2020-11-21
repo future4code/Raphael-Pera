@@ -53,6 +53,28 @@ class PostData extends BaseDataBase {
         }
     }
 
+
+    public getFeedByType = async(data: any) => {
+        try {
+            const {id, type} = data
+
+            const sqlRaw = `
+                SELECT lu.name, description, created_at, type
+                FROM labook_posts lp
+                JOIN labook_users lu
+                ON lp.type = "${type}" AND lu.id = lp.author_id AND NOT lp.author_id ="${id}"
+                ORDER BY lp.created_at DESC
+                ;
+            `
+
+            const queryResult = await this.connection.raw(sqlRaw)
+
+            return queryResult[0]
+        } catch (error) {
+            throw new Error(error.sqlMessage || error.message)
+        }
+    }
+
 }
 
 export const postData: PostData = new PostData()

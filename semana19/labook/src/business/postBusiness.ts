@@ -87,6 +87,22 @@ class PostBusiness {
     }
 
 
+    public getFeedByType = async(data: any):Promise<any> => {
+        try {
+            const {type, token} = data
+            if (!token) {throw new Error(`Token is required`)}
+            const tokenData: AuthenticationData = services.getTokenData(token)
+            const id: string = tokenData.id
+            
+            const feed = await postData.getFeedByType({id, type})
+            if(!feed) {throw new Error(`Ops! No feed`)}
+
+            return feed
+        } catch (error) {
+            throw new Error(error.message)
+        }
+    }
+
  }
 
 export const postBusiness: PostBusiness = new PostBusiness()

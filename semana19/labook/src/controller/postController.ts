@@ -57,6 +57,17 @@ class PostController {
          res.status(res.statusCode).send({message: `[ERROR]: ${error.message}`})
       }
    }
+
+   public getFeedByType = async(req: Request, res:Response) => {
+      try {
+         const type: string = req.params.type
+         const token: string | undefined = req.headers.authorization
+         const feed = await postBusiness.getFeedByType({type, token})
+         res.status(200).send(feed)
+      } catch (error) {
+         res.status(res.statusCode).send({message: `[ERROR]: ${error.message}`})
+      }
+   }
 }
 
 export const postController: PostController = new PostController()
