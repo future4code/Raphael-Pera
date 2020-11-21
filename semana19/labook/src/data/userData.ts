@@ -3,7 +3,7 @@ import { BaseDataBase } from "./BaseDataBase"
 
 
 class UserData extends BaseDataBase {
-    createUser = async(user: User) => {
+    public createUser = async(user: User) => {
         try {
             await this.connection ('labook_users')
                 .insert({
@@ -17,7 +17,7 @@ class UserData extends BaseDataBase {
         }
     }
 
-    selectUserByEmail = async(email: string) => {
+    public selectUserByEmail = async(email: string) => {
         try {
             const queryResult: any = await this.connection("labook_users")
             .select("*")
@@ -42,6 +42,9 @@ class UserData extends BaseDataBase {
                 })
 
         } catch (error) {
+            console.log(`[UserData]: [addFriend]: [ERROR]`)
+            console.log(error.message)
+            console.log(error.sqlMessage)
             throw new Error(error.message || error.sqlMessage)
         }
     }
@@ -74,7 +77,7 @@ class UserData extends BaseDataBase {
             // console.log(queryResult[0][0])
             return queryResult[0][0]
         } catch (error) {
-            throw new Error(error.message || error.sqlMessage)
+            throw new Error(error.sqlMessage || error.message)
         }
     }
 

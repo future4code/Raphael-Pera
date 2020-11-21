@@ -66,12 +66,14 @@ class UserBusiness {
 
             const tokenData: AuthenticationData = services.getTokenData(token)
             const userId: string = tokenData.id
-            const id: string = services.generateId()
-
+            
             const friendship1 = await userData.getFriendship({userId, friendId})
-            const friendship2 = await userData.getFriendship({userId: friendId, friendId: userId})
+            let id: string = services.generateId()
+            if (!friendship1) { console.log(`[friendship1]: adding`) ;await userData.addFriend({id, userId: userId, friendId: friendId}) }
 
-            if (!friendship1) { await userData.addFriend({id, userId: userId, friendId: friendId}) }
+
+            const friendship2 = await userData.getFriendship({userId: friendId, friendId: userId})
+            id = services.generateId()
             if (!friendship2) { await userData.addFriend({id, userId: friendId, friendId: userId}) }
         } catch (error) {
             throw new Error(error.message)

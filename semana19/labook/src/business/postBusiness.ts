@@ -10,6 +10,7 @@ class PostBusiness {
         try {
             const {photo, description, type, token} = data
             if (!token) {throw new Error(`Authorization token is requeired`)}
+            if (!description) {throw new Error(`Post description is required`)}
             const tokenData: AuthenticationData = services.getTokenData(token)
             const authorId: string = tokenData.id
 
@@ -61,11 +62,31 @@ class PostBusiness {
     
             return post
         } catch (error) {
-            if (error.message === 'jwt malformed') {throw new Error(`Unauthorized`)}
-            // throw new Error(`Failure at getting post by id`)
+            switch (error.message) {
+                case 'jwt malformed': throw new Error(`Unauthorized`); break;
+                case 'jwt expired': throw new Error(`Unauthorized. Login required`); break;
+                default: throw new Error(error.message); break;
+            }
+        }
+    }
+
+
+    public getFeed = async(token: string | undefined): Promise<any> => {
+        try {
+            if (!token) {throw new Error(`Token is required`)}
+            const tokenData: AuthenticationData = services.getTokenData(token)
+            const id: string = tokenData.id
+
+            const feed = await postData.getFeed(id)
+            if(!feed) {throw new Error(`Ops! No feed`)}
+
+            return feed
+        } catch (error) {
             throw new Error(error.message)
         }
     }
+
+
  }
 
 export const postBusiness: PostBusiness = new PostBusiness()

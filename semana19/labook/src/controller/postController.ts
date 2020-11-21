@@ -1,13 +1,10 @@
 import { Request, Response } from "express"
 import { postBusiness } from "../business/postBusiness"
-import { postData } from "../data/postData"
 import { Post } from "../model/post"
-import { services } from "../services/services"
-import { AuthenticationData } from "../types"
 
 
 class PostController {
-   createPost = async(req: Request, res: Response) => {
+   public createPost = async(req: Request, res: Response) => {
       try {
          let message = "Post created successfully!"
 
@@ -30,23 +27,13 @@ class PostController {
       }
    }
 
-   getPostById = async(req: Request, res: Response) => {
+
+   public getPostById = async(req: Request, res: Response) => {
       try {
          let message = "Success!"
    
          const id: string = req.params.id
          const token: string | undefined = req.headers.authorization
-         // const post: Post = await postData.getPostById(id)
-
-         // const queryResult: any = await connection("labook_posts")
-         //    .select("*")
-         //    .where({ id })
-   
-         // if (!queryResult[0]) {
-         //    res.statusCode = 404
-         //    message = "Post not found"
-         //    throw new Error(message)
-         // }
    
          const post: Post = await postBusiness.getPostById({token, id}) 
    
@@ -57,6 +44,17 @@ class PostController {
          res.statusCode = 400
    
          res.send({ message })
+      }
+   }
+
+
+   public getFeed = async(req: Request, res: Response) => {
+      try {
+         const token: string | undefined = req.headers.authorization
+         const feed = await postBusiness.getFeed(token)
+         res.status(200).send(feed)
+      } catch (error) {
+         res.status(res.statusCode).send({message: `[ERROR]: ${error.message}`})
       }
    }
 }
