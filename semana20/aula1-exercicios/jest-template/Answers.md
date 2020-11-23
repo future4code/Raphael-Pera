@@ -62,3 +62,105 @@ describe('Purchase', ()=>{
 })
 ```
 
+-------------------------------
+
+## EXERCICIO 3
+**a)** Sem dúvidas
+
+
+**b)**
+```
+export const verifyAge = (casino: Casino, users: CasinoUser[]): Result => {
+    const minimumAge: number = casino.location === LOCATION.EUA ? 21 : 18
+
+    let result: Result = {brazilians: {allowed:[], unallowed:[]}, americans:{allowed:[], unallowed:[]}}
+    // let result = undefined
+
+    users.map(user => {
+        if (user.nacionality === NACIONALITY.BRAZILIAN) {
+            if (user.age < minimumAge) {
+                result.brazilians.unallowed.push(user.name)
+            } else {
+                result.brazilians.allowed.push(user.name)
+            }
+        } else if (user.nacionality === NACIONALITY.AMERICAN) {
+            if (user.age < minimumAge) {
+                result.americans.unallowed.push(user.name)
+            } else {
+                result.americans.allowed.push(user.name)
+            }
+        }
+    })
+
+    return result
+}
+```
+
+**c)** O mais difícil foi inicializar a variável "result", typada como "Result", pois precisei criar um objeto inicial vazio
+
+
+-------------------------------
+
+## EXERCICIO 4
+**a)**
+```
+    test('Brazilian user allowed to enter a brazilian casino', () => {
+        const users: CasinoUser[] = [
+            {name: 'Raphael', nacionality: NACIONALITY.BRAZILIAN, age: 32}
+        ]
+
+        const casino: Casino = {name:'Labamba', location: LOCATION.BRAZIL}
+
+        const result: Result = verifyAge(casino, users)
+
+        expect(result).toEqual(
+            {
+                brazilians: { allowed: [ 'Raphael' ], unallowed: [] },
+                americans: { allowed: [], unallowed: [] }
+            }
+        )
+    })
+```
+
+**b)**
+```
+    test('American user allowed to enter a brazilian casino', () => {
+        const users: CasinoUser[] = [
+            {name: 'Phillip', nacionality: NACIONALITY.AMERICAN, age: 19}
+        ]
+
+        const casino: Casino = {name:'Cassinópolis', location: LOCATION.BRAZIL}
+
+        const result: Result = verifyAge(casino, users)
+
+        expect(result).toEqual(
+            {
+                brazilians: { allowed: [], unallowed: [] },
+                americans: { allowed: ['Phillip'], unallowed: [] }
+            }
+        )
+    })
+```
+
+**c)**
+```
+    test('2 american and 2 brazilian users entering a american casino', () => {
+        const users: CasinoUser[] = [
+            {name: 'Roger', nacionality: NACIONALITY.AMERICAN, age: 19},
+            {name: 'Joseph', nacionality: NACIONALITY.AMERICAN, age: 19},
+            {name: 'Eduardo', nacionality: NACIONALITY.BRAZILIAN, age: 19},
+            {name: 'Natalia', nacionality: NACIONALITY.BRAZILIAN, age: 19}
+        ]
+
+        const casino: Casino = {name:'GimmeYourMoney', location: LOCATION.EUA}
+
+        const result: Result = verifyAge(casino, users)
+
+        expect(result).toEqual(
+            {
+                brazilians: { allowed: [], unallowed: [ 'Eduardo', 'Natalia' ] },
+                americans: { allowed: [], unallowed: [ 'Roger', 'Joseph' ] }
+            }
+        )
+    })
+```

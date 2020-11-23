@@ -15,4 +15,4 @@ export const performPurchase = (
     return undefined
 }
 
-console.log(performPurchase({name: 'Raphael', balance: 500}, 300))
+// console.log(performPurchase({name: 'Raphael', balance: 500}, 300))
