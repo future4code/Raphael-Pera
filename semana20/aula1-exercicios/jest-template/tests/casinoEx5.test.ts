@@ -1,40 +1,47 @@
 import { Casino, CasinoUser, LOCATION, NACIONALITY, Result, verifyAge } from "../src/casino"
 
 
-describe('Casino', () => {
-    test('Brazilian user allowed to enter a brazilian casino', () => {
+describe('CasinoEx5', () => {
+    test('result.brazilian.allowed.length > 0 and < 2', () => {
         const users: CasinoUser[] = [
-            {name: 'Raphael', nacionality: NACIONALITY.BRAZILIAN, age: 32}
+            {name: 'Felipe', nacionality: NACIONALITY.BRAZILIAN, age: 26}
         ]
 
-        const casino: Casino = {name:'Labamba', location: LOCATION.BRAZIL}
+        const casino: Casino = {name:'MuitaCana', location: LOCATION.BRAZIL}
 
         const result: Result = verifyAge(casino, users)
 
         expect(result).toEqual(
             {
-                brazilians: { allowed: [ 'Raphael' ], unallowed: [] },
+                brazilians: { allowed: [ 'Felipe' ], unallowed: [] },
                 americans: { allowed: [], unallowed: [] }
             }
         )
+
+        expect(result.brazilians.allowed.length).toBeGreaterThan(0)
+        expect(result.brazilians.allowed.length).toBeLessThan(2)
     })
 
-    test('American user allowed to enter a brazilian casino', () => {
+
+    test('result.american.unallowed.length = 0', () => {
         const users: CasinoUser[] = [
-            {name: 'Phillip', nacionality: NACIONALITY.AMERICAN, age: 19}
+            {name: 'James', nacionality: NACIONALITY.AMERICAN, age: 23}
         ]
 
-        const casino: Casino = {name:'Cassinópolis', location: LOCATION.BRAZIL}
+        const casino: Casino = {name:'SeuDimDim', location: LOCATION.BRAZIL}
 
         const result: Result = verifyAge(casino, users)
 
         expect(result).toEqual(
             {
                 brazilians: { allowed: [], unallowed: [] },
-                americans: { allowed: ['Phillip'], unallowed: [] }
+                americans: { allowed: ['James'], unallowed: [] }
             }
         )
+
+        expect(result.americans.unallowed.length).toEqual(0)
     })
+
 
     test('2 american(19) and 2 brazilian(19) users entering a american casino', () => {
         const users: CasinoUser[] = [
@@ -54,6 +61,9 @@ describe('Casino', () => {
                 americans: { allowed: [], unallowed: [ 'Roger', 'Joseph' ] }
             }
         )
+
+        expect(result.americans.unallowed).toContain('Roger')
+        expect(result.brazilians.unallowed).toContain('Eduardo')
     })
 
 
@@ -75,7 +85,10 @@ describe('Casino', () => {
                 americans: { allowed: ['Roger', 'Joseph'], unallowed: [] }
             }
         )
-    })
 
+        expect(result.brazilians.unallowed.length).toBeGreaterThan(1)
+        expect(result.americans.unallowed.length).toBeLessThan(1)
+        expect(result.americans.allowed.length).toEqual(2)
+    })
 
 })

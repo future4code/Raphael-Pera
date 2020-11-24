@@ -71,12 +71,12 @@ export const verifyAge = (casino: Casino, users: CasinoUser[]): Result => {
 //     {name: 'Raphael', nacionality: NACIONALITY.BRAZILIAN, age: 32}
 // ]
 
-const casino: Casino = {name:'Labamba', location: LOCATION.EUA}
-const users: CasinoUser[] = [
-    {name: 'Roger', nacionality: NACIONALITY.AMERICAN, age: 21},
-    {name: 'Joseph', nacionality: NACIONALITY.AMERICAN, age: 21},
-    {name: 'Eduardo', nacionality: NACIONALITY.BRAZILIAN, age: 19},
-    {name: 'Natalia', nacionality: NACIONALITY.BRAZILIAN, age: 19}
-]
+// const casino: Casino = {name:'Labamba', location: LOCATION.EUA}
+// const users: CasinoUser[] = [
+//     {name: 'Roger', nacionality: NACIONALITY.AMERICAN, age: 21},
+//     {name: 'Joseph', nacionality: NACIONALITY.AMERICAN, age: 21},
+//     {name: 'Eduardo', nacionality: NACIONALITY.BRAZILIAN, age: 19},
+//     {name: 'Natalia', nacionality: NACIONALITY.BRAZILIAN, age: 19}
+// ]
 
-console.log(verifyAge(casino, users))
+// console.log(verifyAge(casino, users))

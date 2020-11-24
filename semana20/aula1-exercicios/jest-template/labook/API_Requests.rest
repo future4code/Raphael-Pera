@@ -1,0 +1,65 @@
+@raphaelToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFhMGIyMzhmLTgyOWYtNDU4Zi04Mjg0LTk0MDhmZGRlOWFhYyIsImlhdCI6MTYwNjE4NDA4OSwiZXhwIjoxNjA2MTkxMjg5fQ.ZnMDUYg51_4gFaxuXKatKsBtb4EDwqRLsUVOY47Hw7o
+@postHost = http://localhost:3003/posts
+@userHost = http://localhost:3003/users
+
+
+### createUser
+POST {{userHost}}/signup
+Content-Type: application/json
+
+{
+    "name": "Filomena",
+    "email": "filomena@email.com",
+    "password": "labenu123"
+}
+
+
+### userLogin
+POST {{userHost}}/login
+Content-Type: application/json
+
+{
+    "email": "raphael@email.com",
+    "password": "labenu123"
+}
+
+
+### createPost
+POST {{postHost}}/create
+Authorization: {{raphaelToken}}
+Content-Type: application/json
+
+{
+    "photo": "",
+    "description": "Post terceiro teste REST Client do Raphael",
+    "type": "normal"
+}
+
+
+### getPostById
+@postId = fa9b9e54-6d01-4b4e-a17d-6a7617f8a572
+GET {{postHost}}/{{postId}}
+Authorization: {{raphaelToken}}
+
+
+### addFriend
+@friendId = f5b4fb7f-68b7-4d66-84ad-dfa18810cb7b
+POST {{userHost}}/addFriend/{{friendId}}
+Authorization: {{raphaelToken}}
+
+
+### deleteFriend
+@friendId = bc02b7c2-43c1-4549-854f-7ada91e4dfbc
+DELETE {{userHost}}/deleteFriend/{{friendId}}
+Authorization: {{raphaelToken}}
+
+
+### getFeed
+GET  {{postHost}}/feed
+Authorization: {{raphaelToken}}
+
+
+### getFeedByType
+@postType = normal
+GET {{postHost}}/feed/{{postType}}
+Authorization: {{raphaelToken}}
