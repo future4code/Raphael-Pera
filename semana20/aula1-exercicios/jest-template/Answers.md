@@ -292,7 +292,7 @@ export const verifyAge = (casino: Casino, users: CasinoUser[]): Result => {
 -------------------------------
 
 ## EXERCICIO 6
-A FAZER: testar a rotina "createPost" para então realizar o exercício 6 / verificar se será necessário pegar também a função "getPostById"
+
 **a)**
 ```
     test('Create post (success)', async() => {
@@ -322,4 +322,11 @@ A FAZER: testar a rotina "createPost" para então realizar o exercício 6 / veri
 ```
 
 **b)**
+```
+    afterAll(async () => {
+        await postData.deletePostByDescription("description_test")
+        await BaseDataBase.destroyConnection()
+    })
+```
+
 Precisamos encerrar a conexão com o banco de dados e deletar entradas feitas durante os testes
