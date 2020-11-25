@@ -1,0 +1,5 @@
+@postHost = http://localhost:3003/posts
+@userHost = http://localhost:3003/users
+
+### getUserById
+GET {{userHost}}/profile/1

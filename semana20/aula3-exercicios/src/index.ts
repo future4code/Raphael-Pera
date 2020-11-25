@@ -1,6 +1,7 @@
 /**************************** IMPORTS ******************************/
 import express, { Express } from "express"
 import cors from "cors"
+import { userRouter } from "./router/userRouter"
 // import { userRouter } from "./routes/userRoutes"
 // import { postRouter } from "./routes/postRoutes"
 
@@ -12,8 +13,8 @@ app.use(cors())
 
 
 /**************************** ENDPOINTS ******************************/
-// app.use('/users', userRouter)
-// app.use('/posts', postRouter)
+app.use('/users', userRouter)
+
 
 
 /**************************** SERVER INIT ******************************/
