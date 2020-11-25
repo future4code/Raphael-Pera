@@ -1,4 +1,5 @@
-import userData from "../data/userData"
+import {userData} from "../data/userData"
+import { CustomError } from "../errors/CustomError"
 
 
 export class UserBusiness {
@@ -7,11 +8,12 @@ export class UserBusiness {
             if(!id) {throw new Error(`User ID is required`)}
 
             const user = await userData.getUserById(id)
-            if(!user) {throw new Error(`User not found`)}
+            if(!user) {throw new CustomError(404, `User not found`)}
             // console.log(`[UserBusiness]: [getUserById]: user =`, user)
             return user
         } catch (error) {
-            throw new Error(error.message)
+            const {statusCode, message} = error
+            throw new CustomError(statusCode, message)
         }
     }
 }

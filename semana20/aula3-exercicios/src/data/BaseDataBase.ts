@@ -15,8 +15,9 @@ export class BaseDataBase {
         }
     })
 
-    public static async destroyConnection(): Promise<void> {
+    public async destroyConnection(): Promise<void> {
         await BaseDataBase.connection.destroy()
     }
-    
 }
+
+export default new BaseDataBase()

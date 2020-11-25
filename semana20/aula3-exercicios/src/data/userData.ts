@@ -1,4 +1,4 @@
-import { query } from "express";
+import { CustomError } from "../errors/CustomError";
 import { BaseDataBase } from "./BaseDataBase";
 
 
@@ -16,9 +16,9 @@ export class UserData extends BaseDataBase {
             // console.log(`[UserData]: [getUserById]: queryResult[0] =`, queryResult[0])
             return queryResult[0][0]
         } catch (error) {
-            throw new Error(error.sqlMessage || error.message)
+            throw new CustomError(400, error.sqlMessage || error.message)
         }
     }
 }
 
-export default new UserData()
+export const userData:UserData = new UserData()

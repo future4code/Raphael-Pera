@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { userBusiness, UserBusiness } from "../business/userBusiness";
+import { userBusiness } from "../business/userBusiness";
 
 
 
@@ -12,7 +12,8 @@ export class UserController {
 
             res.status(200).send(user)
         } catch (error) {
-            res.status(res.statusCode).send({message: `[ERROR]: ${error.message}`})
+            const {statusCode, message} = error
+            res.status(statusCode || 400).send({message})
         }
     } 
 }
