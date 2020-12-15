@@ -1,5 +1,5 @@
 import { userData } from '../data/userData';
-import { User } from '../model/User';
+import { User } from '../model/user';
 import { services } from "../services/services";
 import { AuthenticationData } from '../types';
 

@@ -2,4 +2,4 @@
 @userHost = http://localhost:3003/users
 
 ### getUserById
-GET {{userHost}}/profile/1
+GET {{userHost}}/profile/2
