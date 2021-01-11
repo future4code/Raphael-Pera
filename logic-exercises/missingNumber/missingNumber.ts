@@ -5,5 +5,3 @@ function missingNumber(arr: number[]):number | null {
     }
     return null
 }
-
-console.log(missingNumber([5,3,2,4,1]))
