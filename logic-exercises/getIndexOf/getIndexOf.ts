@@ -5,5 +5,3 @@ function getIndexOf(source: string, character: string):number | any {
     }
     return -1
 }
-
-console.log(getIndexOf('jabuticaba', 'j'))
