@@ -6,4 +6,4 @@ function getIndexOf(source, character) {
     }
     return -1;
 }
-console.log(getIndexOf('jabuticaba', 'j'));
+console.log(getIndexOf('', 'a'));
