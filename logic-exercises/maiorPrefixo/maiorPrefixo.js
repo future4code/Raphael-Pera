@@ -11,7 +11,4 @@ function maiorPrefixo(wordList) {
     }
     return prefixo;
 }
-var wordList = ["coracao", "cor", "corona", "coreia"];
-wordList = ["flower", "flow", "flight"];
-// wordList = ['abacate', 'abacateba', 'abacates', 'abacateira', 'abacateiro']
-console.log(maiorPrefixo(wordList));
+console.log('resposta:', maiorPrefixo(['batata', 'tomate']));
