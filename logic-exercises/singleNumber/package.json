@@ -1,0 +1,17 @@
+{
+  "name": "singleNumber",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "singleNumber": "tsc singleNumber.ts && node singleNumber.js",
+    "singleNumber2": "tsc singleNumber2.ts && node singleNumber2.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.1.3"
+  }
+}
